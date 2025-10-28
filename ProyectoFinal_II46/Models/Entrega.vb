@@ -9,7 +9,7 @@
         MyBase.New()
     End Sub
     Public Sub New(idEntrega As Integer, idPaquete As Integer, idRepartidor As Integer, fechaEntrega As Date, observaciones As String, paquete As Paquete)
-        MyBase.New(paquete.IdPaquete, paquete.Descripcion, paquete.Peso, paquete.FechaEnvio, paquete.Idcliente, paquete.Estado)
+        MyBase.New(paquete.IdPaquete, paquete.Idcliente, paquete.Descripcion, paquete.Peso, paquete.FechaEnvio, paquete.Estado)
         Me.IdEntrega = idEntrega
         Me.IdPaquete = idPaquete
         Me.IdRepartidor = idRepartidor

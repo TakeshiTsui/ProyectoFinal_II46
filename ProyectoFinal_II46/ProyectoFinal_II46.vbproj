@@ -218,7 +218,10 @@
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Base_Datos\DataBaseHelper.vb" />
+    <Compile Include="Base_Datos\BdCliente.vb" />
+    <Compile Include="Base_Datos\BdEntrega.vb" />
+    <Compile Include="Base_Datos\BdPaquete.vb" />
+    <Compile Include="Base_Datos\BdRepartidor.vb" />
     <Compile Include="Contact.aspx.designer.vb">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
