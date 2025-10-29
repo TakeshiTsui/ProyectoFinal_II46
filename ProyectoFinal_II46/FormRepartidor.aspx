@@ -14,7 +14,7 @@
 <div class="container d-flex flex-column mb-3 gap-2">
     <section>
         <h1> Mensajeria RapidiTico 🇨🇷</h1>
-        <h5> Inserte datos del cliente</h5>
+        <h5> Ingrese datos del repartidor</h5>
     </section>
    <asp:TextBox ID="txtNombre" CssClass="form-control" Placeholder="Nombre" runat="server"></asp:TextBox>
     <asp:TextBox ID="txtApellido" CssClass="form-control" Placeholder="Apellido" runat="server"></asp:TextBox>
@@ -29,7 +29,6 @@
 <asp:GridView ID="GvRepartidores" CssClass="table table-striped table-hover table-success" runat="server" AutoGenerateColumns="False"
     DataKeyNames="IdRepartidor" DataSourceID="SqlDataSource3"
     OnRowDeleting="GvRepartidores_RowDeleting"
-    OnRowEditing="GvRepartidores_RowEditing"
     OnRowCancelingEdit="GvRepartidores_RowCancelingEdit"
     OnRowUpdating="GvRepartidores_RowUpdating"
     OnSelectedIndexChanged="GvRepartidores_SelectedIndexChanged">
