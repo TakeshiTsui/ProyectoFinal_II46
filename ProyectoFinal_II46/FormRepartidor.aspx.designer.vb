@@ -23,6 +23,15 @@ Partial Public Class FormRepartidor
     Protected WithEvents Editando As Global.System.Web.UI.WebControls.HiddenField
 
     '''<summary>
+    '''Control btnCrear.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnCrear As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Control txtNombre.
     '''</summary>
     '''<remarks>
@@ -93,6 +102,15 @@ Partial Public Class FormRepartidor
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnBorrar As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control btnCancelar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnCancelar As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control lblMensaje.

@@ -4,9 +4,53 @@
     Protected BdHelper As New BdRepartidor()
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+        If Not IsPostBack Then
+            txtNombre.Visible = False
+            txtApellido.Visible = False
+            txtTelefono.Visible = False
+            txtVehiculo.Visible = False
+            txtPlacaVehiculo.Visible = False
+            btnGuardar.Visible = False
+            btnActualizar.Visible = False
+            btnBorrar.Visible = False
+            btnCancelar.Visible = False
+            CType(GvRepartidores.Columns(0), CommandField).ShowSelectButton = False
+            CType(GvRepartidores.Columns(1), CommandField).ShowEditButton = False
+            CType(GvRepartidores.Columns(8), CommandField).ShowDeleteButton = False 'ajusta el índice según tu GridView
+            GvRepartidores.DataBind()
+        End If
     End Sub
-
+    Protected Sub btnCrear_Click(sender As Object, e As EventArgs)
+        txtNombre.Visible = True
+        txtApellido.Visible = True
+        txtTelefono.Visible = True
+        txtVehiculo.Visible = True
+        txtPlacaVehiculo.Visible = True
+        btnGuardar.Visible = True
+        btnActualizar.Visible = True
+        btnBorrar.Visible = True
+        btnCancelar.Visible = True
+        CType(GvRepartidores.Columns(0), CommandField).ShowSelectButton = True
+        CType(GvRepartidores.Columns(1), CommandField).ShowEditButton = True
+        CType(GvRepartidores.Columns(8), CommandField).ShowDeleteButton = True 'ajusta el índice según tu GridView
+        GvRepartidores.DataBind()
+    End Sub
+    Protected Sub btnCancelar_Click(sender As Object, e As EventArgs)
+        txtNombre.Visible = False
+        txtApellido.Visible = False
+        txtTelefono.Visible = False
+        txtVehiculo.Visible = False
+        txtPlacaVehiculo.Visible = False
+        btnGuardar.Visible = False
+        btnActualizar.Visible = False
+        btnBorrar.Visible = False
+        btnCancelar.Visible = False
+        CType(GvRepartidores.Columns(0), CommandField).ShowSelectButton = False
+        CType(GvRepartidores.Columns(1), CommandField).ShowEditButton = False
+        CType(GvRepartidores.Columns(8), CommandField).ShowDeleteButton = False 'ajusta el índice según tu GridView
+        GvRepartidores.DataBind()
+        lblMensaje.Text = ""
+    End Sub
     Protected Sub GvRepartidores_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
         Try
             Dim idRepartidor As Integer = Convert.ToInt32(GvRepartidores.DataKeys(e.RowIndex).Value)
@@ -114,5 +158,7 @@
         txtVehiculo.Text = ""
         txtPlacaVehiculo.Text = ""
         Editando.Value = ""
+        lblMensaje.Text = ""
     End Sub
+
 End Class

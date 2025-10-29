@@ -3,14 +3,21 @@
     Public Cliente As New Cliente()
     Protected BdHelper As New BdCliente()
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        txtNombre.Visible = False
-        txtApellido.Visible = False
-        txtTelefono.Visible = False
-        txtDireccion.Visible = False
-        txtCorreo.Visible = False
-        btnGuardar.Visible = False
-        btnActualizar.Visible = False
-        btnBorrar.Visible = False
+        If Not IsPostBack Then
+            txtNombre.Visible = False
+            txtApellido.Visible = False
+            txtTelefono.Visible = False
+            txtDireccion.Visible = False
+            txtCorreo.Visible = False
+            btnGuardar.Visible = False
+            btnActualizar.Visible = False
+            btnBorrar.Visible = False
+            btnCancelar.Visible = False
+            CType(GvClientes.Columns(0), CommandField).ShowSelectButton = False
+            CType(GvClientes.Columns(1), CommandField).ShowEditButton = False
+            CType(GvClientes.Columns(8), CommandField).ShowDeleteButton = False 'ajusta el índice según tu GridView
+            GvClientes.DataBind()
+        End If
     End Sub
     Protected Sub btnCrear_Click(sender As Object, e As EventArgs)
         txtNombre.Visible = True
@@ -21,7 +28,11 @@
         btnGuardar.Visible = True
         btnActualizar.Visible = True
         btnBorrar.Visible = True
-        btnCrear.Visible = False
+        btnCancelar.Visible = True
+        CType(GvClientes.Columns(0), CommandField).ShowSelectButton = True
+        CType(GvClientes.Columns(1), CommandField).ShowEditButton = True
+        CType(GvClientes.Columns(8), CommandField).ShowDeleteButton = True 'ajusta el índice según tu GridView
+        GvClientes.DataBind()
     End Sub
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs)
         Try
@@ -113,13 +124,11 @@
             btnGuardar.Enabled = False
             Dim row As GridViewRow = GvClientes.SelectedRow
             Dim id As Integer = Convert.ToInt32(GvClientes.DataKeys(row.RowIndex).Value)
-
             txtNombre.Text = row.Cells(3).Text
             txtApellido.Text = row.Cells(4).Text
             txtTelefono.Text = row.Cells(5).Text
             txtDireccion.Text = row.Cells(6).Text
             txtCorreo.Text = row.Cells(7).Text
-
             Editando.Value = id.ToString()
         Catch ex As Exception
             lblMensaje.Text = "❌ Error al seleccionar cliente: " & ex.Message
@@ -135,5 +144,21 @@
         txtCorreo.Text = ""
         Editando.Value = ""
 
+    End Sub
+
+    Protected Sub btnCancelar_Click(sender As Object, e As EventArgs)
+        txtNombre.Visible = False
+        txtApellido.Visible = False
+        txtTelefono.Visible = False
+        txtDireccion.Visible = False
+        txtCorreo.Visible = False
+        btnGuardar.Visible = False
+        btnActualizar.Visible = False
+        btnBorrar.Visible = False
+        btnCancelar.Visible = False
+        CType(GvClientes.Columns(0), CommandField).ShowSelectButton = False
+        CType(GvClientes.Columns(1), CommandField).ShowEditButton = False
+        CType(GvClientes.Columns(8), CommandField).ShowDeleteButton = False 'ajusta el índice según tu GridView
+        GvClientes.DataBind()
     End Sub
 End Class

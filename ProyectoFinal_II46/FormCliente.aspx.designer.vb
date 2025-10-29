@@ -104,6 +104,15 @@ Partial Public Class FormCliente
     Protected WithEvents btnBorrar As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''Control btnCancelar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnCancelar As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Control lblMensaje.
     '''</summary>
     '''<remarks>

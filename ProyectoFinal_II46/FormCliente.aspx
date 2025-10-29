@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="FormCliente.aspx.vb" Inherits="ProyectoFinal_II46.FormCliente" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="FormCliente.aspx.vb" Inherits="ProyectoFinal_II46.FormCliente" MaintainScrollPositionOnPostBack="true" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
         .btn-hover-move {
@@ -25,6 +25,7 @@
         <asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-primary btn-hover-move" Text="Guardar" OnClick="btnGuardar_Click" />
         <asp:Button ID="btnActualizar" runat="server" CssClass="btn btn-primary btn-hover-move" Text="Actualizar" OnClick="btnActualizar_Click" />
         <asp:Button ID="btnBorrar" runat="server" CssClass="btn btn-danger" Text="Borrar" OnClick="btnBorrar_Click" />
+        <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-secondary" Text="Cancelar" OnClick="btnCancelar_Click" />
         <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
     </div>
     <asp:GridView ID="GvClientes" CssClass="table table-striped table-hover table-success" runat="server" AutoGenerateColumns="False"
@@ -34,15 +35,15 @@
         OnRowUpdating="GvClientes_RowUpdating"
         OnSelectedIndexChanged="GvClientes_SelectedIndexChanged">
         <Columns>
-            <asp:CommandField ShowSelectButton="True" ControlStyle-CssClass="btn btn-success" />
-            <asp:CommandField ShowEditButton="True" ControlStyle-CssClass="btn btn-primary" />
+            <asp:CommandField ShowSelectButton="true" ControlStyle-CssClass="btn btn-success" />
+            <asp:CommandField ShowEditButton="true" ControlStyle-CssClass="btn btn-primary" />
             <asp:BoundField DataField="IdCliente" HeaderText="IdCliente" ReadOnly="True" SortExpression="IdCliente" InsertVisible="False" />
             <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
             <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
             <asp:BoundField DataField="Telefono" HeaderText="Telefono" SortExpression="Telefono" />
             <asp:BoundField DataField="Direccion" HeaderText="Direccion" SortExpression="Direccion" />
             <asp:BoundField DataField="Correo" HeaderText="Correo" SortExpression="Correo" />
-            <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="btn btn-danger"/>
+            <asp:CommandField ShowDeleteButton="true" ControlStyle-CssClass="btn btn-danger"/>
         </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString %>" ProviderName="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Cliente]"></asp:SqlDataSource>
