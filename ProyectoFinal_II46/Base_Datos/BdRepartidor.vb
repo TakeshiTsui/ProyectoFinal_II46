@@ -56,7 +56,7 @@ Public Class BdRepartidor
             Dim sql As String = "DELETE FROM Repartidor WHERE IdRepartidor = @IdRepartidor"
             Using connection As New SqlConnection(connectionString)
                 Using command As New SqlCommand(sql, connection)
-                    command.Parameters.AddWithValue("@IdCliente", idRepartidor)
+                    command.Parameters.AddWithValue("@IdRepartidor", idRepartidor)
                     connection.Open()
                     command.ExecuteNonQuery()
                 End Using

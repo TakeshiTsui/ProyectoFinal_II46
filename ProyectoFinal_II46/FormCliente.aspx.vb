@@ -3,9 +3,26 @@
     Public Cliente As New Cliente()
     Protected BdHelper As New BdCliente()
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+        txtNombre.Visible = False
+        txtApellido.Visible = False
+        txtTelefono.Visible = False
+        txtDireccion.Visible = False
+        txtCorreo.Visible = False
+        btnGuardar.Visible = False
+        btnActualizar.Visible = False
+        btnBorrar.Visible = False
     End Sub
-
+    Protected Sub btnCrear_Click(sender As Object, e As EventArgs)
+        txtNombre.Visible = True
+        txtApellido.Visible = True
+        txtTelefono.Visible = True
+        txtDireccion.Visible = True
+        txtCorreo.Visible = True
+        btnGuardar.Visible = True
+        btnActualizar.Visible = True
+        btnBorrar.Visible = True
+        btnCrear.Visible = False
+    End Sub
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs)
         Try
             Cliente.Nombre = txtNombre.Text
@@ -35,6 +52,7 @@
 
     Protected Sub btnActualizar_Click(sender As Object, e As EventArgs)
         Try
+
             Dim cliente As New Cliente With {
                 .Idcliente = Convert.ToInt32(Editando.Value),
                 .Nombre = txtNombre.Text,
@@ -49,6 +67,7 @@
             GvClientes.DataBind()
             GvClientes.EditIndex = -1
             lblMensaje.Text = "✅ Cliente actualizado correctamente."
+            btnGuardar.Enabled = True
         Catch ex As Exception
             lblMensaje.Text = "❌ Error al actualizar el cliente: " & ex.Message
         End Try
@@ -72,7 +91,6 @@
     Protected Sub GvClientes_RowUpdating(sender As Object, e As GridViewUpdateEventArgs)
         Try
             Dim id As Integer = Convert.ToInt32(GvClientes.DataKeys(e.RowIndex).Value)
-
             Dim cliente As New Cliente With {
                 .Idcliente = id,
                 .Nombre = e.NewValues("Nombre").ToString(),
@@ -92,14 +110,15 @@
 
     Protected Sub GvClientes_SelectedIndexChanged(sender As Object, e As EventArgs)
         Try
+            btnGuardar.Enabled = False
             Dim row As GridViewRow = GvClientes.SelectedRow
             Dim id As Integer = Convert.ToInt32(GvClientes.DataKeys(row.RowIndex).Value)
 
-            txtNombre.Text = row.Cells(2).Text
-            txtApellido.Text = row.Cells(3).Text
-            txtTelefono.Text = row.Cells(4).Text
-            txtDireccion.Text = row.Cells(5).Text
-            txtCorreo.Text = row.Cells(6).Text
+            txtNombre.Text = row.Cells(3).Text
+            txtApellido.Text = row.Cells(4).Text
+            txtTelefono.Text = row.Cells(5).Text
+            txtDireccion.Text = row.Cells(6).Text
+            txtCorreo.Text = row.Cells(7).Text
 
             Editando.Value = id.ToString()
         Catch ex As Exception
@@ -108,6 +127,7 @@
     End Sub
 
     Protected Sub btnBorrar_Click(sender As Object, e As EventArgs)
+        btnGuardar.Enabled = True
         txtNombre.Text = ""
         txtApellido.Text = ""
         txtTelefono.Text = ""

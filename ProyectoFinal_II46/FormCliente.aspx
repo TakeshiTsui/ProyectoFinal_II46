@@ -16,6 +16,7 @@
             <h1> Mensajeria RapidiTico 🇨🇷</h1>
             <h5> Inserte datos del cliente</h5>
         </section>
+        <asp:Button ID="btnCrear" runat="server" CssClass="btn btn-success btn-hover-move" Text="Crear Nuevo Cliente" OnClick="btnCrear_Click" />
         <asp:TextBox ID="txtNombre" CssClass="form-control" PlaceHolder="Nombre" runat="server"></asp:TextBox>
         <asp:TextBox ID="txtApellido" CssClass="form-control" PlaceHolder="Apellido" runat="server"></asp:TextBox>
         <asp:TextBox ID="txtTelefono" CssClass="form-control" Placeholder="Teléfono" runat="server"></asp:TextBox>
@@ -29,7 +30,6 @@
     <asp:GridView ID="GvClientes" CssClass="table table-striped table-hover table-success" runat="server" AutoGenerateColumns="False"
         DataKeyNames="IdCliente" DataSourceID="SqlDataSource3"
         OnRowDeleting="GvClientes_RowDeleting"
-        OnRowEditing="GvClientes_RowEditing"
         OnRowCancelingEdit="GvClientes_RowCancelingEdit"
         OnRowUpdating="GvClientes_RowUpdating"
         OnSelectedIndexChanged="GvClientes_SelectedIndexChanged">
