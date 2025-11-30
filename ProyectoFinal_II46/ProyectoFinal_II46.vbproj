@@ -297,6 +297,9 @@
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Utils\DbHelper.vb" />
+    <Compile Include="Utils\Simple3ds.vb" />
+    <Compile Include="Utils\SwalUtils.vb" />
     <Compile Include="ViewSwitcher.ascx.vb">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
