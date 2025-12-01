@@ -1,4 +1,6 @@
-﻿Public Class FormRepartidor
+﻿Imports System.Web.UI.WebControls.Expressions
+Imports ProyectoFinal_II46.Utils.SwalUtils
+Public Class FormRepartidor
     Inherits System.Web.UI.Page
     Public Repartidor As New Repartidor()
     Protected BdHelper As New BdRepartidor()
@@ -56,9 +58,10 @@
             Dim idRepartidor As Integer = Convert.ToInt32(GvRepartidores.DataKeys(e.RowIndex).Value)
             BdHelper.delete(idRepartidor)
             e.Cancel = True
+            ShowDeleteMessage(Me, "Eliminado", "Repartidor eliminado correctamente.")
             GvRepartidores.DataBind()
         Catch ex As Exception
-            lblMensaje.Text = "Error al eliminar la persona: " & ex.Message
+            ShowErrorMessage(Me, "Error", "Error al eliminar el repartidor: " & ex.Message)
         End Try
     End Sub
     Protected Sub GvRepartidores_RowCancelingEdit(sender As Object, e As GridViewCancelEditEventArgs)
@@ -80,9 +83,9 @@
             BdHelper.update(repartidor)
             GvRepartidores.EditIndex = -1
             GvRepartidores.DataBind()
-            lblMensaje.Text = "✅ Datos del repartidor actualizado correctamente."
+            ShowSuccessMessage(Me, "Actualizado", "✅ Datos del repartidor actualizado correctamente.")
         Catch ex As Exception
-            lblMensaje.Text = "❌ Error al actualizar el cliente: " & ex.Message
+            ShowErrorMessage(Me, "Error", "❌ Error al actualizar el repartidor: " & ex.Message)
         End Try
     End Sub
 
@@ -98,7 +101,7 @@
             txtPlacaVehiculo.Text = row.Cells(7).Text
             Editando.Value = id.ToString()
         Catch ex As Exception
-            lblMensaje.Text = "❌ Error al seleccionar cliente: " & ex.Message
+            ShowErrorMessage(Me, "Error", "❌ Error al seleccionar repartidor: " & ex.Message)
         End Try
     End Sub
 
@@ -111,20 +114,15 @@
             Repartidor.PlacaVehiculo = txtPlacaVehiculo.Text
 
             If BdHelper.create(Repartidor) = True Then
-                lblMensaje.Text = "✅ Cliente guardado correctamente."
-                ' Limpiar campos
-                txtNombre.Text = ""
-                txtApellido.Text = ""
-                txtTelefono.Text = ""
-                txtVehiculo.Text = ""
-                txtPlacaVehiculo.Text = ""
+                ShowSuccessMessage(Me, "Guardado", "✅ Repartidor guardado correctamente.")
+                LimpiarCampos()
             Else
-                lblMensaje.Text = "⚠️ Error al guardar el cliente."
+                ShowErrorMessage(Me, "Error", "❌ No se pudo guardar el repartidor.")
             End If
 
             GvRepartidores.DataBind()
         Catch ex As Exception
-            lblMensaje.Text = "❌ Error: " & ex.Message
+            ShowErrorMessage(Me, "Error", "❌ Error al guardar el repartidor: " & ex.Message)
         End Try
     End Sub
 
@@ -143,22 +141,26 @@
 
             GvRepartidores.DataBind()
             GvRepartidores.EditIndex = -1
-            lblMensaje.Text = "✅ Cliente actualizado correctamente."
+            ShowSuccessMessage(Me, "Actualizado", "✅ Datos del repartidor actualizado correctamente.")
             btnGuardar.Enabled = True
         Catch ex As Exception
-            lblMensaje.Text = "❌ Error al actualizar el cliente: " & ex.Message
+            ShowErrorMessage(Me, "Error", "❌ Error al actualizar el repartidor: " & ex.Message)
         End Try
     End Sub
 
     Protected Sub btnBorrar_Click(sender As Object, e As EventArgs)
         btnGuardar.Enabled = True
+        LimpiarCampos()
+        Editando.Value = ""
+        lblMensaje.Text = ""
+    End Sub
+
+    Public Sub LimpiarCampos()
         txtNombre.Text = ""
         txtApellido.Text = ""
         txtTelefono.Text = ""
         txtVehiculo.Text = ""
         txtPlacaVehiculo.Text = ""
-        Editando.Value = ""
-        lblMensaje.Text = ""
     End Sub
 
 End Class

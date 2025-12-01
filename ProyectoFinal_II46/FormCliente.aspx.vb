@@ -1,4 +1,5 @@
-﻿Public Class FormCliente
+﻿Imports ProyectoFinal_II46.Utils.SwalUtils
+Public Class FormCliente
     Inherits System.Web.UI.Page
     Public Cliente As New Cliente()
     Protected BdHelper As New BdCliente()
@@ -43,20 +44,15 @@
             Cliente.Correo = txtCorreo.Text
 
             If BdHelper.create(Cliente) = True Then
-                lblMensaje.Text = "✅ Cliente guardado correctamente."
-                ' Limpiar campos
-                txtNombre.Text = ""
-                txtApellido.Text = ""
-                txtTelefono.Text = ""
-                txtDireccion.Text = ""
-                txtCorreo.Text = ""
+                ShowSuccessMessage(Me, "Guardado", "✅ Cliente guardado correctamente.")
+                limpiarCampos()
             Else
-                lblMensaje.Text = "⚠️ Error al guardar el cliente."
+                ShowErrorMessage(Me, "Error", "❌ Error al guardar el cliente.")
             End If
 
             GvClientes.DataBind()
         Catch ex As Exception
-            lblMensaje.Text = "❌ Error: " & ex.Message
+            ShowErrorMessage(Me, "Error", "❌ Error al guardar el cliente: " & ex.Message)
         End Try
     End Sub
 
@@ -77,10 +73,10 @@
 
             GvClientes.DataBind()
             GvClientes.EditIndex = -1
-            lblMensaje.Text = "✅ Cliente actualizado correctamente."
+            ShowSuccessMessage(Me, "Actualizado", "✅ Datos del cliente actualizado correctamente.")
             btnGuardar.Enabled = True
         Catch ex As Exception
-            lblMensaje.Text = "❌ Error al actualizar el cliente: " & ex.Message
+            ShowErrorMessage(Me, "Error", "❌ Error al actualizar el cliente: " & ex.Message)
         End Try
     End Sub
 
@@ -90,8 +86,9 @@
             BdHelper.delete(id)
             e.Cancel = True
             GvClientes.DataBind()
+            ShowDeleteMessage(Me, "Eliminado", "✅ Cliente eliminado correctamente.")
         Catch ex As Exception
-            lblMensaje.Text = "Error al eliminar la persona: " & ex.Message
+            ShowErrorMessage(Me, "Error", "❌ Error al eliminar el cliente: " & ex.Message)
         End Try
     End Sub
     Protected Sub GvClientes_RowCancelingEdit(sender As Object, e As GridViewCancelEditEventArgs)
@@ -113,9 +110,9 @@
             BdHelper.update(cliente)
             GvClientes.EditIndex = -1
             GvClientes.DataBind()
-            lblMensaje.Text = "✅ Cliente actualizado correctamente."
+            ShowSuccessMessage(Me, "Actualizado", "✅ Datos del cliente actualizado correctamente.")
         Catch ex As Exception
-            lblMensaje.Text = "❌ Error al actualizar el cliente: " & ex.Message
+            ShowErrorMessage(Me, "Error", "❌ Error al actualizar el cliente: " & ex.Message)
         End Try
     End Sub
 
@@ -131,17 +128,13 @@
             txtCorreo.Text = row.Cells(7).Text
             Editando.Value = id.ToString()
         Catch ex As Exception
-            lblMensaje.Text = "❌ Error al seleccionar cliente: " & ex.Message
+            ShowErrorMessage(Me, "Error", "Error al seleccionar el cliente: " & ex.Message)
         End Try
     End Sub
 
     Protected Sub btnBorrar_Click(sender As Object, e As EventArgs)
         btnGuardar.Enabled = True
-        txtNombre.Text = ""
-        txtApellido.Text = ""
-        txtTelefono.Text = ""
-        txtDireccion.Text = ""
-        txtCorreo.Text = ""
+        limpiarCampos()
         Editando.Value = ""
 
     End Sub
@@ -160,5 +153,13 @@
         CType(GvClientes.Columns(1), CommandField).ShowEditButton = False
         CType(GvClientes.Columns(8), CommandField).ShowDeleteButton = False 'ajusta el índice según tu GridView
         GvClientes.DataBind()
+    End Sub
+
+    Public Sub limpiarCampos()
+        txtNombre.Text = ""
+        txtApellido.Text = ""
+        txtTelefono.Text = ""
+        txtDireccion.Text = ""
+        txtCorreo.Text = ""
     End Sub
 End Class
