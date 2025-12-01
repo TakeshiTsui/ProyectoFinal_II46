@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class DbHelper
-    Public ReadOnly ConectionString As String = ConfigurationManager.ConnectionStrings("II-46ConnectionString").ConnectionString
+    Public ReadOnly ConectionString As String = ConfigurationManager.ConnectionStrings("ProyectoFinal_II46ConnectionString").ConnectionString
     Public Sub New()
         EnsureErrorLogTableExists() ' Asegúrate de que la tabla exista al crear una instancia.
     End Sub

@@ -2,6 +2,7 @@
 
 Public Class BdCliente
     Private ReadOnly connectionString As String = ConfigurationManager.ConnectionStrings("ProyectoFinal_II46ConnectionString").ConnectionString
+    Private ReadOnly dbhelper As New DbHelper() 'clase para mejorar conexion y manejo de errores
     Public Function create(cliente As Cliente) As Boolean
         Try
             Dim sql As String = "INSERT INTO Cliente (Nombre, Apellido, Telefono, Direccion, Correo) 
@@ -13,14 +14,7 @@ Public Class BdCliente
                 New SqlParameter("@Direccion", cliente.Direccion),
                 New SqlParameter("@Correo", cliente.Correo)
             }
-
-            Using connection As New SqlConnection(connectionString)
-                Using command As New SqlCommand(sql, connection)
-                    command.Parameters.AddRange(parametros.ToArray())
-                    connection.Open()
-                    command.ExecuteNonQuery()
-                End Using
-            End Using
+            dbhelper.ExecuteNonQuery(sql, parametros)
             Return True
         Catch ex As Exception
             Return False
@@ -29,13 +23,10 @@ Public Class BdCliente
     Public Function delete(id As Integer) As String
         Try
             Dim sql As String = "DELETE FROM Cliente WHERE IdCliente = @IdCliente"
-            Using connection As New SqlConnection(connectionString)
-                Using command As New SqlCommand(sql, connection)
-                    command.Parameters.AddWithValue("@IdCliente", id)
-                    connection.Open()
-                    command.ExecuteNonQuery()
-                End Using
-            End Using
+            Dim Parametros As New List(Of SqlParameter) From {
+            New SqlParameter("@IdCliente", id)
+            }
+            dbhelper.ExecuteNonQuery(sql, Parametros)
             Return "Cliente eliminado correctamente."
         Catch ex As Exception
             Return "Error al eliminar el cliente: " & ex.Message
@@ -59,14 +50,7 @@ Public Class BdCliente
                 New SqlParameter("@Direccion", cliente.Direccion),
                 New SqlParameter("@Correo", cliente.Correo)
             }
-
-            Using connection As New SqlConnection(connectionString)
-                Using command As New SqlCommand(sql, connection)
-                    command.Parameters.AddRange(parametros.ToArray())
-                    connection.Open()
-                    command.ExecuteNonQuery()
-                End Using
-            End Using
+            dbhelper.ExecuteNonQuery(sql, parametros)
             Return "Cliente actualizado correctamente."
         Catch ex As Exception
             Return "Error al actualizar el cliente: " & ex.Message

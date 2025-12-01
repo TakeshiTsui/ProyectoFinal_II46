@@ -2,6 +2,7 @@
 
 Public Class BdRepartidor
     Private ReadOnly connectionString As String = ConfigurationManager.ConnectionStrings("ProyectoFinal_II46ConnectionString").ConnectionString
+    Private ReadOnly DbHelper As New DbHelper() 'clase para mejorar conexion y manejo de errores
     Public Function create(repartidor As Repartidor) As Boolean
         Try
             Dim sql As String = "INSERT INTO Repartidor (Nombre, Apellido, Telefono, Vehiculo, PlacaVehiculo) 
@@ -13,13 +14,7 @@ Public Class BdRepartidor
                 New SqlParameter("@Vehiculo", repartidor.Vehiculo),
                 New SqlParameter("@PlacaVehiculo", repartidor.PlacaVehiculo)
             }
-            Using connection As New SqlConnection(connectionString)
-                Using command As New SqlCommand(sql, connection)
-                    command.Parameters.AddRange(parametros.ToArray())
-                    connection.Open()
-                    command.ExecuteNonQuery()
-                End Using
-            End Using
+            DbHelper.ExecuteNonQuery(sql, parametros)
             Return True
         Catch ex As Exception
             Return False
@@ -39,13 +34,7 @@ Public Class BdRepartidor
                 New SqlParameter("@Vehiculo", repartidor.Vehiculo),
                 New SqlParameter("@PlacaVehiculo", repartidor.PlacaVehiculo)
             }
-            Using connection As New SqlConnection(connectionString)
-                Using command As New SqlCommand(sql, connection)
-                    command.Parameters.AddRange(parametros.ToArray())
-                    connection.Open()
-                    command.ExecuteNonQuery()
-                End Using
-            End Using
+            DbHelper.ExecuteNonQuery(sql, parametros)
             Return " ✅ Repartidor actualizado correctamente "
         Catch ex As Exception
             Return "⚠️ Error al actulizar al repartidor, favor intentar nuevamente"
@@ -54,13 +43,10 @@ Public Class BdRepartidor
     Public Function delete(idRepartidor As Integer)
         Try
             Dim sql As String = "DELETE FROM Repartidor WHERE IdRepartidor = @IdRepartidor"
-            Using connection As New SqlConnection(connectionString)
-                Using command As New SqlCommand(sql, connection)
-                    command.Parameters.AddWithValue("@IdRepartidor", idRepartidor)
-                    connection.Open()
-                    command.ExecuteNonQuery()
-                End Using
-            End Using
+            Dim parametros As New List(Of SqlParameter) From {
+            New SqlParameter("@IdRepartidor", idRepartidor)
+            }
+            DbHelper.ExecuteNonQuery(sql, Parametros)
             Return " ✅ Repartidor eliminado correctamente. "
         Catch ex As Exception
             Return " ⚠️ Error al eliminar el cliente: " & ex.Message
