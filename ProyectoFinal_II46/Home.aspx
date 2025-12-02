@@ -2,67 +2,102 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 <style>
-    .home-container {
-        max-width: 600px;
-        margin: 40px auto;
-        padding: 25px;
-        border-radius: 12px;
-        background: #ffffff;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        text-align: center;
+    body {
+        background: linear-gradient(135deg, #4a90e2, #50c9c3);
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
     }
 
-    .home-container h3 {
-        font-weight: 600;
-        margin-bottom: 10px;
+    .home-container {
+        max-width: 580px;
+        margin: 70px auto;
+        padding: 35px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+        text-align: center;
+        animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .home-container h3, 
+    .home-container .h3 {
+        font-weight: 700;
+        margin-bottom: 5px;
+        color: #333;
+        letter-spacing: 0.5px;
     }
 
     .home-container .email {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         margin-top: 5px;
-        color: #555;
+        color: #444;
     }
 
-    /* Estilos para botones */
+    /* Botones */
     .home-buttons {
-        margin-top: 25px;
+        margin-top: 30px;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 15px;
     }
 
-    .home-buttons a {
-        padding: 12px;
-        font-size: 1.05rem;
-        border-radius: 8px;
-        font-weight: 500;
+    .home-button {
+        padding: 14px;
+        font-size: 1.15rem;
+        border-radius: 12px;
+        font-weight: 600;
+        background: #ffffff;
+        border: none;
+        text-decoration: none;
+        color: #333;
+        transition: 0.25s;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
     }
+
+    .home-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.20);
+    }
+
+    /* Colores especiales */
+    .btn-clientes { background: #4a90e2; color: white; }
+    .btn-entregas { background: #7b8cff; color: white; }
+    .btn-paquetes { background: #50c9c3; color: white; }
+    .btn-repartidores { background: #56d5d1; color: white; }
+
 </style>
 
 <div class="home-container">
+
     <asp:Label ID="lblUsuario" runat="server" CssClass="h3 d-block" Text="Usuario"></asp:Label>
     <asp:Label ID="lblEmail" runat="server" CssClass="email d-block"></asp:Label>
 
-    <!-- Botones de navegación -->
     <div class="home-buttons">
 
-        <a href="FormCliente.aspx" class="btn btn-primary w-100">
+        <a href="FormCliente.aspx" class="home-button btn-clientes">
             Clientes
         </a>
 
-        <a href="FormEntrega.aspx" class="btn btn-secondary w-100">
+        <a href="FormEntrega.aspx" class="home-button btn-entregas">
             Entregas
         </a>
 
-        <a href="FormPaquete.aspx" class="btn btn-info text-white w-100">
-           Paquetes
+        <a href="FormPaquete.aspx" class="home-button btn-paquetes">
+            Paquetes
         </a>
 
-        <a href="FormRepartidor.aspx" class="btn btn-info text-white w-100">
+        <a href="FormRepartidor.aspx" class="home-button btn-repartidores">
             Repartidores
         </a>
-    </div>
 
+    </div>
 </div>
 
 </asp:Content>

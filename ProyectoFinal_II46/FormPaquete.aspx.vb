@@ -6,27 +6,37 @@ Public Class FormPaquete
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        txtIdClientes.Visible = False
-        txtDescripcion.Visible = False
-        txtPeso.Visible = False
-        txtFechaEnvio.Visible = False
-        txtEstado.Visible = False
-        btnGuardar.Visible = False
-        btnActualizar.Visible = False
-        btnBorrar.Visible = False
-        btnCancelar.Visible = False
-        CType(GvPaquete.Columns(0), CommandField).ShowSelectButton = False
-        CType(GvPaquete.Columns(1), CommandField).ShowEditButton = False
-        CType(GvPaquete.Columns(11), CommandField).ShowDeleteButton = False
-        GvPaquete.DataBind()
+        If Not IsPostBack Then
+            txtIdClientes.Visible = False
+            txtNombrePaquete.Visible = False
+            txtDescripcion.Visible = False
+            txtPrecio.Visible = False
+            txtPeso.Visible = False
+            txtFechaEnvio.Visible = False
+            'txtEstado.Visible = False
+            ddlEstado.Visible = False
+            txtDestino.Visible = False
+            btnGuardar.Visible = False
+            btnActualizar.Visible = False
+            btnBorrar.Visible = False
+            btnCancelar.Visible = False
+            CType(GvPaquete.Columns(0), CommandField).ShowSelectButton = False
+            CType(GvPaquete.Columns(1), CommandField).ShowEditButton = False
+            CType(GvPaquete.Columns(11), CommandField).ShowDeleteButton = False
+            GvPaquete.DataBind()
+        End If
     End Sub
 
     Protected Sub btnCrear_Click(sender As Object, e As EventArgs)
         txtIdClientes.Visible = True
+        txtNombrePaquete.Visible = True
         txtDescripcion.Visible = True
+        txtPrecio.Visible = True
         txtPeso.Visible = True
         txtFechaEnvio.Visible = True
-        txtEstado.Visible = True
+        'txtEstado.Visible = True
+        ddlEstado.Visible = True
+        txtDestino.Visible = True
         btnGuardar.Visible = True
         btnActualizar.Visible = True
         btnBorrar.Visible = True
@@ -41,13 +51,13 @@ Public Class FormPaquete
         Try
 
             Dim paquete As New Paquete With {
-                .IdClientes = Convert.ToInt32(txtIdClientes.Text),
+                .IdCliente = Convert.ToInt32(txtIdClientes.Text),
                 .Nombrepaquete = txtNombrePaquete.Text,
                 .Descripcion = txtDescripcion.Text,
                 .Precio = txtPrecio.Text,
                 .Peso = txtPeso.Text,
                 .FechaEnvio = Convert.ToDateTime(txtFechaEnvio.Text),
-                .Estado = txtEstado.Text,
+                .Estado = ddlEstado.SelectedValue,
                 .Destino = txtDestino.Text,
                 .IdPaquete = Editando.Value()
             }
@@ -79,7 +89,8 @@ Public Class FormPaquete
         txtPrecio.Visible = False
         txtPeso.Visible = False
         txtFechaEnvio.Visible = False
-        txtEstado.Visible = False
+        'txtEstado.Visible = False
+        ddlEstado.Visible = False
         txtDestino.Visible = False
         btnGuardar.Visible = False
         btnActualizar.Visible = False
@@ -104,7 +115,7 @@ Public Class FormPaquete
             Dim id As Integer = Convert.ToInt32(GvPaquete.DataKeys(e.RowIndex).Value)
             Dim paquete As New Paquete With {
                 .IdPaquete = id,
-                .IdClientes = Convert.ToInt32(e.NewValues("IdClientes")),
+                .IdCliente = Convert.ToInt32(e.NewValues("IdCliente")),
                 .Nombrepaquete = e.NewValues("NombrePaquete").ToString(),
                 .Descripcion = e.NewValues("Descripcion").ToString(),
                 .Precio = e.NewValues("Precio").ToString,
@@ -133,7 +144,7 @@ Public Class FormPaquete
             txtPrecio.Text = row.Cells(6).Text
             txtPeso.Text = row.Cells(7).Text
             txtFechaEnvio.Text = CDate(row.Cells(8).Text).ToString("yyyy-MM-dd")
-            txtEstado.Text = row.Cells(9).Text
+            ddlEstado.Text = row.Cells(9).Text
             txtDestino.Text = row.Cells(10).Text
             Editando.Value = id.ToString()
         Catch ex As Exception
@@ -144,16 +155,23 @@ Public Class FormPaquete
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs)
         Try
             paquete.Nombrepaquete = txtNombrePaquete.Text
-            paquete.IdClientes = Convert.ToInt32(txtIdClientes.Text)
+            paquete.IdCliente = Convert.ToInt32(txtIdClientes.Text)
             paquete.Descripcion = txtDescripcion.Text
             paquete.Precio = Convert.ToDecimal(txtPrecio.Text)
             paquete.Peso = Convert.ToDecimal(txtPeso.Text)
             paquete.FechaEnvio = Convert.ToDateTime(txtFechaEnvio.Text)
-            paquete.Estado = txtEstado.Text
+            paquete.Estado = ddlEstado.Text
             paquete.Destino = txtDestino.Text
             If dbHelper.create(paquete) = True Then
                 ShowSuccessMessage(Me, "Guardado", "✅ Paquete guardado correctamente.")
-                limpiarFormulario()
+                txtIdClientes.Text = ""
+                txtNombrePaquete.Text = ""
+                txtDescripcion.Text = ""
+                txtPrecio.Text = ""
+                txtPeso.Text = ""
+                txtFechaEnvio.Text = ""
+                ddlEstado.Text = ""
+                txtDestino.Text = ""
             Else
                 ShowErrorMessage(Me, "Error", "❌ Error al guardar el paquete.")
             End If
@@ -173,7 +191,7 @@ Public Class FormPaquete
         txtPrecio.Text = ""
         txtPeso.Text = ""
         txtFechaEnvio.Text = ""
-        txtEstado.Text = ""
+        ddlEstado.Text = ""
         txtDestino.Text = ""
     End Sub
 End Class

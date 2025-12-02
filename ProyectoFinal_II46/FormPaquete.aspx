@@ -24,8 +24,15 @@
     <asp:TextBox ID="txtPrecio" CssClass="form-control" PlaceHolder="Precio" runat="server"></asp:TextBox>
     <asp:TextBox ID="txtPeso" CssClass="form-control" Placeholder="Peso" runat="server"></asp:TextBox>
     <asp:TextBox ID="txtFechaEnvio" CssClass="form-control" Placeholder="Fecha de Envio" TextMode="Date" runat="server"></asp:TextBox>
-    <asp:Textbox ID="txtEstado" CssClass="form-control" Placeholder="Estado" runat="server"></asp:Textbox>
-    <asp:TextBox ID="txtDestino" CssClass="form-control" PlaceHolder="Dirreción de envio" runat="server"></asp:TextBox>
+    <%--<asp:Textbox ID="txtEstado" CssClass="form-control" Placeholder="Estado" runat="server"></asp:Textbox>--%>
+    <asp:DropDownList ID="ddlEstado" runat="server" CssClass="form-control">
+        <asp:ListItem Text="Todos" Value=""></asp:ListItem>
+        <asp:ListItem Text="Pendiente" Value="Pendiente"></asp:ListItem>
+        <asp:ListItem Text="En Camino" Value="En Camino"></asp:ListItem>
+        <asp:ListItem Text="Entregado" Value="Entregado"></asp:ListItem>
+        <asp:ListItem Text="Cancelado" Value="Cancelado"></asp:ListItem>
+    </asp:DropDownList>
+    <asp:TextBox ID="txtDestino" CssClass="form-control" PlaceHolder="Dirección de envio" runat="server"></asp:TextBox>
     <asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-primary btn-hover-move" Text="Guardar" OnClick="btnGuardar_Click" />
     <asp:Button ID="btnActualizar" runat="server" CssClass="btn btn-primary btn-hover-move" Text="Actualizar" OnClick="btnActualizar_Click" />
     <asp:Button ID="btnBorrar" runat="server" CssClass="btn btn-danger" Text="Borrar" OnClick="btnBorrar_Click" />
@@ -42,7 +49,7 @@
         <asp:CommandField ShowSelectButton="true" ControlStyle-CssClass="btn btn-success" />
         <asp:CommandField ShowEditButton="true" ControlStyle-CssClass="btn btn-primary" />
         <asp:BoundField DataField="IdPaquete" HeaderText="IdPaquete" ReadOnly="True" SortExpression="IdPaquete" InsertVisible="False" />
-        <asp:BoundField DataField="IdClientes" HeaderText="IdClientes" ReadOnly="True" SortExpression="IdClientes"/>
+        <asp:BoundField DataField="IdCliente" HeaderText="IdCliente" ReadOnly="True" SortExpression="IdCliente"/>
         <asp:BoundField DataField="NombrePaquete" HeaderText="NombrePaquete" SortExpression="NombrePaquete" />
         <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" SortExpression="Descripcion" />
         <asp:BoundField DataField="Precio" HeaderText="Precio" SortExpression="Precio" />

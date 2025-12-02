@@ -12,10 +12,10 @@
     Public Sub New()
         MyBase.New()
     End Sub
-    Public Sub New(idPaquete As Integer, nombrepaquete As String, descripcion As String, precio As Decimal, peso As Decimal, fechaEnvio As Date, idCliente As Integer, estado As String, destino As String, cliente As Cliente)
+    Public Sub New(idPaquete As Integer, idCliente As Integer, nombrepaquete As String, descripcion As String, precio As Decimal, peso As Decimal, fechaEnvio As Date, estado As String, destino As String, cliente As Cliente)
         MyBase.New(cliente.Idcliente, cliente.Nombre, cliente.Apellido, cliente.Telefono, cliente.Direccion, cliente.Correo)
         Me.IdPaquete = idPaquete
-        Me.Idcliente = idCliente
+        Me.IdCliente = idCliente
         Me.Descripcion = descripcion
         Me.Nombrepaquete = nombrepaquete
         Me.Precio = precio
@@ -24,9 +24,9 @@
         Me.Estado = estado
         Me.Destino = destino
     End Sub
-    Public Sub New(idPaquete As Integer, idClientes As Integer, nombrepaquete As String, descripcion As String, precio As Decimal, peso As Decimal, fechaEnvio As Date, estado As String, destino As String)
+    Public Sub New(idPaquete As Integer, idCliente As Integer, nombrepaquete As String, descripcion As String, precio As Decimal, peso As Decimal, fechaEnvio As Date, estado As String, destino As String)
         Me.IdPaquete = idPaquete
-        Me.IdClientes = idClientes
+        Me.IdCliente = idCliente
         Me.Nombrepaquete = nombrepaquete
         Me.Descripcion = descripcion
         Me.Precio = precio
@@ -45,7 +45,7 @@
         End Set
     End Property
 
-    Public Property IdClientes As Integer
+    Public Property IdCliente As Integer
         Get
             Return _idCliente
         End Get

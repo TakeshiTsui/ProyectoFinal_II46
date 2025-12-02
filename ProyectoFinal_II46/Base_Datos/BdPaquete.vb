@@ -9,7 +9,7 @@ Public Class BdPaquete
                                  VALUES (@IdCliente, @NombrePaquete, @Descripcion, @Precio, @Peso, @FechaEnvio, @Estado,@Destino)"
 
             Dim parametros As New List(Of SqlParameter) From {
-                New SqlParameter("@IdCliente", paquete.IdClientes),
+                New SqlParameter("@IdCliente", paquete.Idcliente),
                 New SqlParameter("@NombrePaquete", paquete.Nombrepaquete),
                 New SqlParameter("@Descripcion", paquete.Descripcion),
                 New SqlParameter("@Precio", paquete.Precio),
@@ -39,11 +39,11 @@ Public Class BdPaquete
             Return "Error al eliminar el paquete: " & ex.Message
         End Try
     End Function
-    Public Function update(paquete As Paquete) As String
+    Public Function update(paquete As Paquete) As Boolean
         Try
             Dim sql As String =
                 "UPDATE Paquete SET 
-                    IdClientes = @IdClientes,
+                    IdCliente = @IdCliente,
                     NombrePaquete = @NombrePaquete,
                     Descripcion = @Descripcion,
                     Precio = @Precio,
@@ -54,7 +54,7 @@ Public Class BdPaquete
                  WHERE IdPaquete = @IdPaquete"
 
             Dim parametros As New List(Of SqlParameter) From {
-                New SqlParameter("@IdPaquete", paquete.IdPaquete),
+                New SqlParameter("@IdCliente", paquete.IdCliente),
                 New SqlParameter("@NombrePaquete", paquete.Nombrepaquete),
                 New SqlParameter("@Descripcion", paquete.Descripcion),
                 New SqlParameter("@Precio", paquete.Precio),

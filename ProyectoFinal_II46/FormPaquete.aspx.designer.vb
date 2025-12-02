@@ -86,13 +86,13 @@ Partial Public Class FormPaquete
     Protected WithEvents txtFechaEnvio As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control txtEstado.
+    '''Control ddlEstado.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtEstado As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents ddlEstado As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control txtDestino.
