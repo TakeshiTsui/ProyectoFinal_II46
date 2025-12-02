@@ -23,15 +23,6 @@ Partial Public Class FormEntrega
     Protected WithEvents Editando As Global.System.Web.UI.WebControls.HiddenField
 
     '''<summary>
-    '''Control btnCrear.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnCrear As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Control ddlPaquete.
     '''</summary>
     '''<remarks>
@@ -50,6 +41,24 @@ Partial Public Class FormEntrega
     Protected WithEvents ddlRepartidor As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''Control txtIdPaquete.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtIdPaquete As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control txtIdRepartidor.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtIdRepartidor As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control txtFechaEntrega.
     '''</summary>
     '''<remarks>
@@ -59,6 +68,15 @@ Partial Public Class FormEntrega
     Protected WithEvents txtFechaEntrega As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control ddlEstadoEntrega.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlEstadoEntrega As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''Control txtObservaciones.
     '''</summary>
     '''<remarks>
@@ -66,6 +84,15 @@ Partial Public Class FormEntrega
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtObservaciones As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control btnCrear.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnCrear As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control btnGuardar.
@@ -113,6 +140,15 @@ Partial Public Class FormEntrega
     Protected WithEvents lblMensaje As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''Control GvEntregas.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents GvEntregas As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
     '''Control ddlEstadoFiltro.
     '''</summary>
     '''<remarks>
@@ -140,15 +176,6 @@ Partial Public Class FormEntrega
     Protected WithEvents btnHistorial As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control GvEntregas.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents GvEntregas As Global.System.Web.UI.WebControls.GridView
-
-    '''<summary>
     '''Control GvHistorial.
     '''</summary>
     '''<remarks>
@@ -156,4 +183,13 @@ Partial Public Class FormEntrega
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents GvHistorial As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''Control SqlDataSource4.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents SqlDataSource4 As Global.System.Web.UI.WebControls.SqlDataSource
 End Class

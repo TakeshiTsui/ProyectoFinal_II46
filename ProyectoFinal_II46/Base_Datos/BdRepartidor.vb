@@ -52,4 +52,12 @@ Public Class BdRepartidor
             Return " ⚠️ Error al eliminar el cliente: " & ex.Message
         End Try
     End Function
+    Public Function listarRepartidores() As DataTable
+        Try
+            Dim sql As String = "SELECT *, CONCAT(IdRepartidor, ' ', Nombre, ' ', Apellido, ' ') NombreCompleto FROM Repartidor"
+            Return DbHelper.ExecuteQuery(sql, Nothing)
+        Catch ex As Exception
+            Return New DataTable()
+        End Try
+    End Function
 End Class

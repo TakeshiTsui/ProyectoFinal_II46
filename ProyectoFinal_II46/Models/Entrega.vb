@@ -1,26 +1,29 @@
 ﻿Public Class Entrega
     Inherits Paquete
     Private _idEntrega As Integer
-    Private _idPaquetes As Integer
+    Private _idPaquete As Integer
     Private _idRepartidor As Integer
     Private _fechaEntrega As Date
+    Private _estadoEntrega As String
     Private _observaciones As String
     Public Sub New()
         MyBase.New()
     End Sub
-    Public Sub New(idEntrega As Integer, idPaquete As Integer, idRepartidor As Integer, fechaEntrega As Date, observaciones As String, paquete As Paquete)
-        MyBase.New(paquete.IdPaquete, paquete.Idcliente, paquete.Nombrepaquete, paquete.Descripcion, paquete.Precio, paquete.Peso, paquete.FechaEnvio, paquete.Estado, paquete.Destino)
+    Public Sub New(idEntrega As Integer, idPaquete As Integer, idRepartidor As Integer, fechaEntrega As Date, estadoEntrega As String, observaciones As String, paquete As Paquete)
+        MyBase.New(paquete.IdPaquete, paquete.IdCliente, paquete.Nombrepaquete, paquete.Descripcion, paquete.Precio, paquete.Peso, paquete.FechaEnvio, paquete.Estado, paquete.Destino)
         Me.IdEntrega = idEntrega
         Me.IdPaquete = idPaquete
         Me.IdRepartidor = idRepartidor
         Me.FechaEntrega = fechaEntrega
+        Me.EstadoEntrega = estadoEntrega
         Me.Observaciones = observaciones
     End Sub
-    Public Sub New(idEntrega As Integer, idPaquete As Integer, idRepartidor As Integer, fechaEntrega As Date, observaciones As String)
+    Public Sub New(idEntrega As Integer, idPaquete As Integer, idRepartidor As Integer, fechaEntrega As Date, estadoEntrega As String, observaciones As String)
         Me.IdEntrega = idEntrega
         Me.IdPaquete = idPaquete
         Me.IdRepartidor = idRepartidor
         Me.FechaEntrega = fechaEntrega
+        Me.EstadoEntrega = estadoEntrega
         Me.Observaciones = observaciones
     End Sub
     Public Property IdEntrega As Integer
@@ -32,12 +35,12 @@
         End Set
     End Property
 
-    Public Property IdPaquetes As Integer
+    Public Property IdPaquete As Integer
         Get
-            Return _idPaquetes
+            Return _idPaquete
         End Get
         Set(value As Integer)
-            _idPaquetes = value
+            _idPaquete = value
         End Set
     End Property
 
@@ -56,6 +59,15 @@
         End Get
         Set(value As Date)
             _fechaEntrega = value
+        End Set
+    End Property
+
+    Public Property EstadoEntrega As String
+        Get
+            Return _estadoEntrega
+        End Get
+        Set(value As String)
+            _estadoEntrega = value
         End Set
     End Property
 

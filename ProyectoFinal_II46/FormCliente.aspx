@@ -11,11 +11,11 @@
             }
     </style>
     <asp:HiddenField ID="Editando" runat="server" />
-    <div class="container d-flex flex-column mb-3 gap-2">
-        <section>
-            <h1> Mensajeria RapidiTico 🇨🇷</h1>
-            <h5> Inserte datos del cliente</h5>
-        </section>
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">Mensajería RapidiTico 🇨🇷</h2>
+        <h5 class="text-muted">Gestión de Clientes</h5>
+    </div>
+        <div class="container d-flex flex-column mb-3 gap-2">
         <asp:Button ID="btnCrear" runat="server" CssClass="btn btn-success btn-hover-move" Text="Crear Nuevo Cliente" OnClick="btnCrear_Click" />
         <asp:TextBox ID="txtNombre" CssClass="form-control" PlaceHolder="Nombre" runat="server"></asp:TextBox>
         <asp:TextBox ID="txtApellido" CssClass="form-control" PlaceHolder="Apellido" runat="server"></asp:TextBox>

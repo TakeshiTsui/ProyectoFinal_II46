@@ -67,7 +67,6 @@
         box-shadow: 0 6px 18px rgba(0,0,0,0.20);
     }
 
-    /* Botones con colores personalizados */
     .btn-clientes { background: #4a90e2; }
     .btn-entregas { background: #28a745; }
     .btn-paquetes { background: #f39c12; }
@@ -82,23 +81,10 @@
     <asp:Label ID="lblEmail" runat="server" CssClass="admin-email d-block mt-2"></asp:Label>
 
     <div class="admin-buttons">
-
-        <a href="FormCliente.aspx" class="admin-button btn-clientes">
-            Gestión de Clientes
-        </a>
-
-        <a href="FormEntrega.aspx" class="admin-button btn-entregas">
-            Gestión de Entregas
-        </a>
-
-        <a href="FormPaquete.aspx" class="admin-button btn-paquetes">
-            Gestión de Paquetes
-        </a>
-
-        <a href="FormRepartidor.aspx" class="admin-button btn-repartidores">
-            Gestión de Repartidores
-        </a>
-
+        <a href="FormCliente.aspx" class="admin-button btn-clientes"> Gestión de Clientes</a>
+        <a href="FormEntrega.aspx" class="admin-button btn-entregas"> Gestión de Entregas</a>
+        <a href="FormPaquete.aspx" class="admin-button btn-paquetes"> Gestión de Paquetes</a>
+        <a href="FormRepartidor.aspx" class="admin-button btn-repartidores">Gestión de Repartidores</a>
     </div>
 </div>
 

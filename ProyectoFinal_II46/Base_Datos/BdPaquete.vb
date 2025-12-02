@@ -70,4 +70,12 @@ Public Class BdPaquete
             Return "Error al actualizar el paquete: " & ex.Message
         End Try
     End Function
+    Public Function listarPaquetes() As DataTable
+        Try
+            Dim sql As String = "SELECT *, CONCAT(IdPaquete, ' ',NombrePaquete) AS PaqueteC FROM Paquete"
+            Return DbHelper.ExecuteQuery(sql, Nothing)
+        Catch ex As Exception
+            Return New DataTable()
+        End Try
+    End Function
 End Class

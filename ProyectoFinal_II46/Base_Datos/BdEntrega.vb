@@ -5,12 +5,13 @@ Public Class BdEntrega
     Public ReadOnly DbHelper As New DbHelper() 'clase para mejorar conexion y manejo de errores
     Public Function create(entrega As Entrega) As Boolean
         Try
-            Dim sql As String = "INSERT INTO Entrega (IdPaquete, IdRepartidor, FechaEntrega, Observaciones)
-                                 VALUES (@IdPaquete, @IdRepartidor, @FechaEntrega, @Observaciones)"
+            Dim sql As String = "INSERT INTO Entrega (IdPaquete, IdRepartidor, FechaEntrega, EstadoEntrega,Observaciones)
+                                 VALUES (@IdPaquete, @IdRepartidor, @FechaEntrega, @EstadoEntrega,@Observaciones)"
             Dim parametros As New List(Of SqlParameter) From {
-                New SqlParameter("@IdPaquete", entrega.IdPaquetes),
+                New SqlParameter("@IdPaquete", entrega.IdPaquete),
                 New SqlParameter("@IdRepartidor", entrega.IdRepartidor),
                 New SqlParameter("@FechaEntrega", entrega.FechaEntrega),
+                New SqlParameter("@EstadoEntrega", entrega.EstadoEntrega),
                 New SqlParameter("@Observaciones", entrega.Observaciones)
             }
             DbHelper.ExecuteNonQuery(sql, parametros)
@@ -40,12 +41,14 @@ Public Class BdEntrega
                     IdPaquete = @IdPaquete,
                     IdRepartidor = @IdRepartidor,
                     FechaEntrega = @FechaEntrega,
+                    Estadoentrega = @EstadoEntrega,
                     Observaciones = @Observaciones
                  WHERE IdEntrega = @IdEntrega"
             Dim parametros As New List(Of SqlParameter) From {
-                New SqlParameter("@IdPaquete", entrega.IdPaquetes),
+                New SqlParameter("@IdPaquete", entrega.IdPaquete),
                 New SqlParameter("@IdRepartidor", entrega.IdRepartidor),
                 New SqlParameter("@FechaEntrega", entrega.FechaEntrega),
+                New SqlParameter("@EstadoEntrega", entrega.EstadoEntrega),
                 New SqlParameter("@Observaciones", entrega.Observaciones),
                 New SqlParameter("@IdEntrega", entrega.IdEntrega)
             }
@@ -56,15 +59,15 @@ Public Class BdEntrega
         End Try
     End Function
 
-    Public Function filtraporentrega(Estado As String) As DataTable
+    Public Function filtraporentrega(EstadoEntrega As String) As DataTable
         Try
             Dim sql As String = "SELECT e.IdEntrega, e.IdPaquete, e.IdRepartidor, e.FechaEntrega, e.Observaciones,
                                  p.NombrePaquete, p.Descripcion, p.Precio, p.Peso, p.FechaEnvio, p.Estado, p.Destino
                                  FROM Entrega e
                                  JOIN Paquete p ON e.IdPaquete = p.IdPaquete
-                                 WHERE p.Estado = @Estado"
+                                 WHERE p.EstadoEntrega = @EstadoEntraga"
             Dim parametros As New List(Of SqlParameter) From {
-                New SqlParameter("@Estado", Estado)
+                New SqlParameter("@EstadoEntrega", EstadoEntrega)
             }
             Return DbHelper.ExecuteQuery(sql, parametros)
         Catch ex As Exception
@@ -86,20 +89,5 @@ Public Class BdEntrega
             Return New DataTable()
         End Try
     End Function
-    Public Function listarPaquetes() As DataTable
-        Try
-            Dim sql As String = "SELECT IdPaquete, NombrePaquete FROM Paquete"
-            Return DbHelper.ExecuteQuery(sql, Nothing)
-        Catch ex As Exception
-            Return New DataTable()
-        End Try
-    End Function
-    Public Function listarRepartidores() As DataTable
-        Try
-            Dim sql As String = "SELECT IdRepartidor, NombreRepartidor FROM Repartidor"
-            Return DbHelper.ExecuteQuery(sql, Nothing)
-        Catch ex As Exception
-            Return New DataTable()
-        End Try
-    End Function
+
 End Class

@@ -65,8 +65,6 @@
         transform: translateY(-3px);
         box-shadow: 0 6px 18px rgba(0,0,0,0.20);
     }
-
-    /* Colores especiales */
     .btn-clientes { background: #4a90e2; color: white; }
     .btn-entregas { background: #7b8cff; color: white; }
     .btn-paquetes { background: #50c9c3; color: white; }
@@ -75,28 +73,13 @@
 </style>
 
 <div class="home-container">
-
     <asp:Label ID="lblUsuario" runat="server" CssClass="h3 d-block" Text="Usuario"></asp:Label>
     <asp:Label ID="lblEmail" runat="server" CssClass="email d-block"></asp:Label>
-
     <div class="home-buttons">
-
-        <a href="FormCliente.aspx" class="home-button btn-clientes">
-            Clientes
-        </a>
-
-        <a href="FormEntrega.aspx" class="home-button btn-entregas">
-            Entregas
-        </a>
-
-        <a href="FormPaquete.aspx" class="home-button btn-paquetes">
-            Paquetes
-        </a>
-
-        <a href="FormRepartidor.aspx" class="home-button btn-repartidores">
-            Repartidores
-        </a>
-
+        <a href="FormCliente.aspx" class="home-button btn-clientes"> Clientes </a>
+        <a href="FormEntrega.aspx" class="home-button btn-entregas"> Entregas </a>
+        <a href="FormPaquete.aspx" class="home-button btn-paquetes"> Paquetes </a>
+        <a href="FormRepartidor.aspx" class="home-button btn-repartidores"> Repartidores </a>
     </div>
 </div>
 

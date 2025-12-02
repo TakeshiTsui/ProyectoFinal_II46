@@ -56,5 +56,12 @@ Public Class BdCliente
             Return "Error al actualizar el cliente: " & ex.Message
         End Try
     End Function
-
+    Public Function listarClientes() As DataTable
+        Try
+            Dim sql As String = "SELECT *, CONCAT(IdCliente, ' ', Nombre, ' ', Apellido, ' ') NombreCompleto FROM Cliente"
+            Return dbhelper.ExecuteQuery(sql, Nothing)
+        Catch ex As Exception
+            Return New DataTable()
+        End Try
+    End Function
 End Class

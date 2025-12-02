@@ -3,10 +3,12 @@ Public Class FormPaquete
     Inherits System.Web.UI.Page
     Public paquete As New Paquete()
     Protected dbHelper As New BdPaquete()
+    Protected bdcliente As New BdCliente()
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
+            cargarCliente()
             txtIdClientes.Visible = False
             txtNombrePaquete.Visible = False
             txtDescripcion.Visible = False
@@ -25,6 +27,15 @@ Public Class FormPaquete
             CType(GvPaquete.Columns(11), CommandField).ShowDeleteButton = False
             GvPaquete.DataBind()
         End If
+    End Sub
+
+    Public Sub cargarCliente()
+        ddlCliente.DataSource = bdcliente.listarClientes()
+        ddlCliente.DataTextField = "NombreCompleto"
+        ddlCliente.DataValueField = "IdCliente"
+        ddlCliente.Items.Insert(0, New ListItem("--Seleccione un cliente--", "0"))
+        ddlEstado.Items.Insert(0, New ListItem("--Seleccione un estado--", ""))
+        ddlCliente.DataBind()
     End Sub
 
     Protected Sub btnCrear_Click(sender As Object, e As EventArgs)

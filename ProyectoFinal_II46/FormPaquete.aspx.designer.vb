@@ -32,6 +32,15 @@ Partial Public Class FormPaquete
     Protected WithEvents btnCrear As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''Control ddlCliente.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlCliente As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''Control txtIdClientes.
     '''</summary>
     '''<remarks>
@@ -156,13 +165,4 @@ Partial Public Class FormPaquete
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents GvPaquete As Global.System.Web.UI.WebControls.GridView
-
-    '''<summary>
-    '''Control SqlDataSource3.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents SqlDataSource3 As Global.System.Web.UI.WebControls.SqlDataSource
 End Class
