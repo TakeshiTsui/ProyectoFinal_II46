@@ -71,6 +71,10 @@ Public Class FormRepartidor
 
     Protected Sub GvRepartidores_RowUpdating(sender As Object, e As GridViewUpdateEventArgs)
         Try
+            If txtNombre.Text = "" Or txtApellido.Text = "" Or txtTelefono.Text = "" Or txtVehiculo.Text = "" Or txtPlacaVehiculo.Text = "" Then
+                ShowErrorMessage(Me, "Error", "❌ Por favor, complete todos los campos antes de actualizar.")
+                Return
+            End If
             Dim id As Integer = Convert.ToInt32(GvRepartidores.DataKeys(e.RowIndex).Value)
             Dim repartidor As New Repartidor With {
                 .IdRepartidor = id,
@@ -107,6 +111,10 @@ Public Class FormRepartidor
 
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs)
         Try
+            If txtNombre.Text = "" Or txtApellido.Text = "" Or txtTelefono.Text = "" Or txtVehiculo.Text = "" Or txtPlacaVehiculo.Text = "" Then
+                ShowErrorMessage(Me, "Error", "❌ Por favor, complete todos los campos obligatorios.")
+                Return
+            End If
             Repartidor.Nombre = txtNombre.Text
             Repartidor.Apellido = txtApellido.Text
             Repartidor.Telefono = txtTelefono.Text
@@ -128,6 +136,10 @@ Public Class FormRepartidor
 
     Protected Sub btnActualizar_Click(sender As Object, e As EventArgs)
         Try
+            If txtNombre.Text = "" Or txtApellido.Text = "" Or txtTelefono.Text = "" Or txtVehiculo.Text = "" Or txtPlacaVehiculo.Text = "" Then
+                ShowErrorMessage(Me, "Error", "❌ Por favor, complete todos los campos antes de actualizar.")
+                Return
+            End If
             Dim repartidor As New Repartidor With {
                 .IdRepartidor = Convert.ToInt32(Editando.Value),
                 .Nombre = txtNombre.Text,

@@ -60,7 +60,10 @@ Public Class FormPaquete
 
     Protected Sub btnActualizar_Click(sender As Object, e As EventArgs)
         Try
-
+            If txtNombrePaquete.Text = "" Or txtDescripcion.Text = "" Or txtPrecio.Text = "" Or txtPeso.Text = "" Or txtFechaEnvio.Text = "" Or ddlEstado.SelectedValue = "" Or txtDestino.Text = "" Then
+                ShowErrorMessage(Me, "Error", "❌ Por favor, complete todos los campos antes de actualizar.")
+                Return
+            End If
             Dim paquete As New Paquete With {
                 .IdCliente = Convert.ToInt32(txtIdClientes.Text),
                 .Nombrepaquete = txtNombrePaquete.Text,
@@ -123,6 +126,10 @@ Public Class FormPaquete
 
     Protected Sub GvPaquete_RowUpdating(sender As Object, e As GridViewUpdateEventArgs)
         Try
+            If txtNombrePaquete.Text = "" Or txtDescripcion.Text = "" Or txtPrecio.Text = "" Or txtPeso.Text = "" Or txtFechaEnvio.Text = "" Or ddlEstado.SelectedValue = "" Or txtDestino.Text = "" Then
+                ShowErrorMessage(Me, "Error", "❌ Por favor, complete todos los campos antes de actualizar.")
+                Return
+            End If
             Dim id As Integer = Convert.ToInt32(GvPaquete.DataKeys(e.RowIndex).Value)
             Dim paquete As New Paquete With {
                 .IdPaquete = id,
@@ -165,6 +172,10 @@ Public Class FormPaquete
 
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs)
         Try
+            If txtNombrePaquete.Text = "" Or txtDescripcion.Text = "" Or txtPrecio.Text = "" Or txtPeso.Text = "" Or txtFechaEnvio.Text = "" Or ddlEstado.SelectedValue = "" Or txtDestino.Text = "" Then
+                ShowErrorMessage(Me, "Error", "❌ Por favor, complete todos los campos antes de guardar.")
+                Return
+            End If
             paquete.Nombrepaquete = txtNombrePaquete.Text
             paquete.IdCliente = Convert.ToInt32(txtIdClientes.Text)
             paquete.Descripcion = txtDescripcion.Text

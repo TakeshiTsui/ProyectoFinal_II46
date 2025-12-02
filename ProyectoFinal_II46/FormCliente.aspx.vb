@@ -37,6 +37,10 @@ Public Class FormCliente
     End Sub
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs)
         Try
+            If txtNombre.Text = "" Or txtApellido.Text = "" Or txtTelefono.Text = "" Or txtDireccion.Text = "" Or txtCorreo.Text = "" Then
+                ShowErrorMessage(Me, "Error", "❌ Por favor, complete todos los campos antes de guardar.")
+                Return
+            End If
             Cliente.Nombre = txtNombre.Text
             Cliente.Apellido = txtApellido.Text
             Cliente.Telefono = txtTelefono.Text
@@ -59,7 +63,10 @@ Public Class FormCliente
 
     Protected Sub btnActualizar_Click(sender As Object, e As EventArgs)
         Try
-
+            If txtNombre.Text = "" Or txtApellido.Text = "" Or txtTelefono.Text = "" Or txtDireccion.Text = "" Or txtCorreo.Text = "" Then
+                ShowErrorMessage(Me, "Error", "❌ Por favor, complete todos los campos antes de actualizar.")
+                Return
+            End If
             Dim cliente As New Cliente With {
                 .Idcliente = Convert.ToInt32(Editando.Value),
                 .Nombre = txtNombre.Text,
@@ -98,6 +105,10 @@ Public Class FormCliente
 
     Protected Sub GvClientes_RowUpdating(sender As Object, e As GridViewUpdateEventArgs)
         Try
+            If txtNombre.Text = "" Or txtApellido.Text = "" Or txtTelefono.Text = "" Or txtDireccion.Text = "" Or txtCorreo.Text = "" Then
+                ShowErrorMessage(Me, "Error", "❌ Por favor, complete todos los campos antes de actualizar.")
+                Return
+            End If
             Dim id As Integer = Convert.ToInt32(GvClientes.DataKeys(e.RowIndex).Value)
             Dim cliente As New Cliente With {
                 .Idcliente = id,

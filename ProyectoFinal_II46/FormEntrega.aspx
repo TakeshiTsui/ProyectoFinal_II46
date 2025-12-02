@@ -122,7 +122,7 @@
         </div>
     </div>
     <div class="card card-custom">
-        <h5 class="section-title">Historial del Repartidor</h5>
+        <h5 class="section-title">Historial</h5>
         <asp:GridView ID="GvHistorial" CssClass="table table-striped table-hover table-info"
                       runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource4">
             <Columns>
@@ -133,8 +133,7 @@
             </Columns>
         </asp:GridView>
     </div>
-    <asp:SqlDataSource ID="SqlDataSource4" runat="server"
-        ConnectionString="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString %>" ProviderName="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Entrega]">
+    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString %>" ProviderName="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Entrega]">
     </asp:SqlDataSource>
 </div>
 </asp:Content>

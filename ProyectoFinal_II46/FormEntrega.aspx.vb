@@ -58,6 +58,10 @@ Public Class FormEntrega
 
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs)
         Try
+            If txtIdPaquete.Text = "" Or txtIdRepartidor.Text = "" Or txtFechaEntrega.Text = "" Or ddlEstadoEntrega.SelectedValue = "" Then
+                ShowErrorMessage(Me, "Error", "❌ Por favor, complete todos los campos obligatorios.")
+                Return
+            End If
             entrega.IdPaquete = txtIdPaquete.Text
             entrega.IdRepartidor = txtIdRepartidor.Text
             entrega.FechaEntrega = txtFechaEntrega.Text
@@ -78,6 +82,10 @@ Public Class FormEntrega
 
     Protected Sub btnActualizar_Click(sender As Object, e As EventArgs)
         Try
+            If txtIdPaquete.Text = "" Or txtIdRepartidor.Text = "" Or txtFechaEntrega.Text = "" Or ddlEstadoEntrega.SelectedValue = "" Then
+                ShowErrorMessage(Me, "Error", "❌ Por favor, complete todos los campos obligatorios.")
+                Return
+            End If
             Dim entrega As New Entrega With {
                 .IdEntrega = Convert.ToInt32(Editando.Value),
                 .IdPaquete = txtIdPaquete.Text,
@@ -139,6 +147,10 @@ Public Class FormEntrega
 
     Protected Sub GvEntregas_RowUpdating(sender As Object, e As GridViewUpdateEventArgs)
         Try
+            If txtIdPaquete.Text = "" Or txtIdRepartidor.Text = "" Or txtFechaEntrega.Text = "" Or ddlEstadoEntrega.SelectedValue = "" Then
+                ShowErrorMessage(Me, "Error", "❌ Por favor, complete todos los campos obligatorios.")
+                Return
+            End If
             Dim idEntrega As Integer = Convert.ToInt32(GvEntregas.DataKeys(e.RowIndex).Value)
             Dim entrega As New Entrega With {
                 .IdEntrega = idEntrega,

@@ -89,7 +89,7 @@
 <asp:GridView ID="GvPaquete"
     CssClass="table table-striped table-bordered table-hover mt-4"
     runat="server" AutoGenerateColumns="False"
-    DataKeyNames="IdCliente" DataSourceID="SqlDataSource3"
+    DataKeyNames="IdCliente" DataSourceID="SqlDataSource5"
     OnRowDeleting="GvPaquete_RowDeleting"
     OnRowCancelingEdit="GvPaquete_RowCancelingEdit"
     OnRowUpdating="GvPaquete_RowUpdating"
@@ -110,8 +110,6 @@
     </Columns>
 </asp:GridView>
 
-<asp:SqlDataSource ID="SqlDataSource3" runat="server"
-    ConnectionString="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString %>" ProviderName="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString.ProviderName %>"SelectCommand="SELECT * FROM [Paquete]">
-</asp:SqlDataSource>
+<asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString %>" ProviderName="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Paquete]"></asp:SqlDataSource>
 
 </asp:Content>

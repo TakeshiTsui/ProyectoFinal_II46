@@ -9,6 +9,14 @@ Public Class Registro
     End Sub
 
     Protected Sub btnRegistrar_Click(sender As Object, e As EventArgs)
+        If txtUsuario.Text = "" Or txtEmail.Text = "" Or txtPassword.Text = "" Or txtConfirmarPassword.Text = "" Then
+            SwalUtils.ShowErrorMessage(Me, "Error de registro", "Por favor, complete todos los campos antes de registrarse.")
+            Return
+        End If
+        If txtEmail.Text.Contains("@") = False Or txtEmail.Text.Contains(".") = False Then
+            SwalUtils.ShowErrorMessage(Me, "Error de registro", "Por favor, ingrese un correo electrónico válido.")
+            Return
+        End If
         Dim NombreUsuario = txtUsuario.Text
         Dim Password = txtConfirmarPassword.Text
         Dim PasswordC = txtConfirmarPassword.Text
@@ -19,7 +27,7 @@ Public Class Registro
         Dim encrypter As New Simple3Ds("MiClaveDeEncriptacion123") ' Clave de encriptación
         Dim Pass As String = encrypter.EncryptData(Password) ' Encriptar la contraseña
         Dim usuario As Usuario = New Usuario(NombreUsuario, Pass, txtEmail.Text)
-        Dim mensaje = DbHelper.RegisterUser(usuario)
+        Dim mensaje = dbHelper.RegisterUser(usuario)
         If mensaje.Contains("Error") Then
             SwalUtils.ShowErrorMessage(Me, "Error", mensaje)
         Else

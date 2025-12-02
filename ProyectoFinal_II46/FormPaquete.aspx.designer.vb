@@ -165,4 +165,13 @@ Partial Public Class FormPaquete
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents GvPaquete As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''Control SqlDataSource5.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents SqlDataSource5 As Global.System.Web.UI.WebControls.SqlDataSource
 End Class
