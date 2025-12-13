@@ -72,27 +72,17 @@
 
     <div class="login-container">
         <div class="login-card">
-
             <h2>Iniciar Sesión</h2>
-
             <asp:Label ID="lblMensaje" runat="server" ForeColor="Red"></asp:Label>
-
             <div class="form-group mb-3">
                 <asp:Label ID="lblUsuario" runat="server" Text="Usuario:" CssClass="form-label"></asp:Label>
                 <asp:TextBox ID="txtUsuario" runat="server" CssClass="form-control" placeholder="Ingrese su usuario"></asp:TextBox>
             </div>
-
             <div class="form-group mb-3">
                 <asp:Label ID="lblPassword" runat="server" Text="Contraseña:" CssClass="form-label"></asp:Label>
                 <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="••••••••"></asp:TextBox>
             </div>
-
-            <asp:Button ID="btnLogin"
-                        runat="server"
-                        Text="Entrar"
-                        OnClick="btnLogin_Click"
-                        CssClass="btn btn-primary mt-2" />
-
+            <asp:Button ID="btnLogin" runat="server" Text="Entrar" OnClick="btnLogin_Click" CssClass="btn btn-primary mt-2" />
         </div>
     </div>
 

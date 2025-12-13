@@ -20,8 +20,10 @@ Public Class Login
             Session("Usuario") = User ' Guardar el usuario en la sesión
             If User.Rol = "2" Then
                 Response.Redirect("Admin.aspx") ' Redirigir a la página de administración si es admin
+                ShowSuccessMessage(Me, "Éxito", "Inicio de sesión exitoso.")
                 Return
             End If
+            ShowSuccessMessage(Me, "Éxito", "Inicio de sesión exitoso.")
             Response.Redirect("Home.aspx") ' Redirigir a la página principal
         Else
             ' Mostrar mensaje de error

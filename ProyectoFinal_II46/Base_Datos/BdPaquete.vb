@@ -39,7 +39,7 @@ Public Class BdPaquete
             Return "Error al eliminar el paquete: " & ex.Message
         End Try
     End Function
-    Public Function update(paquete As Paquete) As Boolean
+    Public Function update(paquete As Paquete) As String
         Try
             Dim sql As String =
                 "UPDATE Paquete SET 

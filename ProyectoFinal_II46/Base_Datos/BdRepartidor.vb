@@ -46,8 +46,8 @@ Public Class BdRepartidor
             Dim parametros As New List(Of SqlParameter) From {
             New SqlParameter("@IdRepartidor", idRepartidor)
             }
-            DbHelper.ExecuteNonQuery(sql, Parametros)
-            Return " ✅ Repartidor eliminado correctamente. "
+            DbHelper.ExecuteNonQuery(sql, parametros)
+            Return " ✅ Repartidor eliminado correctamente "
         Catch ex As Exception
             Return " ⚠️ Error al eliminar el cliente: " & ex.Message
         End Try
