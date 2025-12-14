@@ -153,6 +153,9 @@
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="MisEntregas.aspx" />
+    <Content Include="PerfilCliente.aspx" />
+    <Content Include="RastrearPaquete.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -209,6 +212,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Soporte.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
   </ItemGroup>
@@ -293,6 +297,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="MisEntregas.aspx.designer.vb">
+      <DependentUpon>MisEntregas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MisEntregas.aspx.vb">
+      <DependentUpon>MisEntregas.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Models\Cliente.vb" />
     <Compile Include="Models\Entrega.vb" />
     <Compile Include="Models\Paquete.vb" />
@@ -317,6 +328,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PerfilCliente.aspx.designer.vb">
+      <DependentUpon>PerfilCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PerfilCliente.aspx.vb">
+      <DependentUpon>PerfilCliente.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="RastrearPaquete.aspx.designer.vb">
+      <DependentUpon>RastrearPaquete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RastrearPaquete.aspx.vb">
+      <DependentUpon>RastrearPaquete.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Registro.aspx.designer.vb">
       <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
@@ -330,6 +355,13 @@
     <Compile Include="Site.Master.vb">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Soporte.aspx.designer.vb">
+      <DependentUpon>Soporte.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Soporte.aspx.vb">
+      <DependentUpon>Soporte.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Utils\DbHelper.vb" />
     <Compile Include="Utils\Simple3ds.vb" />

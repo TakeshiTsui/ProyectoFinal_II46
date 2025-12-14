@@ -5,82 +5,79 @@
     body {
         background: linear-gradient(135deg, #4a90e2, #50c9c3);
         min-height: 100vh;
-        margin: 0;
-        padding: 0;
     }
 
     .home-container {
-        max-width: 580px;
+        max-width: 620px;
         margin: 70px auto;
-        padding: 35px;
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(6px);
+        padding: 40px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.95);
         box-shadow: 0 8px 30px rgba(0,0,0,0.25);
         text-align: center;
-        animation: fadeIn 0.6s ease-in-out;
+        animation: fadeIn 0.6s ease;
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-15px); }
+        from { opacity: 0; transform: translateY(-12px); }
         to { opacity: 1; transform: translateY(0); }
     }
 
-    .home-container h3, 
-    .home-container .h3 {
+    .welcome-title {
         font-weight: 700;
-        margin-bottom: 5px;
-        color: #333;
-        letter-spacing: 0.5px;
+        color: #1d3557;
     }
 
-    .home-container .email {
-        font-size: 1.15rem;
-        margin-top: 5px;
-        color: #444;
+    .welcome-subtitle {
+        color: #555;
+        margin-bottom: 25px;
     }
 
     /* Botones */
     .home-buttons {
-        margin-top: 30px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
+        margin-top: 25px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 
-    .home-button {
-        padding: 14px;
+    .home-btn {
+        padding: 16px;
         font-size: 1.15rem;
-        border-radius: 12px;
+        border-radius: 14px;
         font-weight: 600;
         background: #ffffff;
         border: none;
         text-decoration: none;
-        color: #333;
-        transition: 0.25s;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        color: white;
+        transition: transform .25s, box-shadow .25s;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.18);
     }
 
     .home-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 18px rgba(0,0,0,0.20);
+        transform: translateY(-4px);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.25);
     }
-    .btn-clientes { background: #4a90e2; color: white; }
-    .btn-entregas { background: #7b8cff; color: white; }
-    .btn-paquetes { background: #50c9c3; color: white; }
-    .btn-repartidores { background: #56d5d1; color: white; }
+    .btn-ratreo { background: #e63946; }
+    .btn-entregas { background: #2a9d8f; }
+    .btn-historial { background: #457b9d; }
+    .btn-perfil  { background: #6c757d; }
+    .btn-soporte { background: #f4a261; }
 
 </style>
 
 <div class="home-container">
-    <asp:Label ID="lblUsuario" runat="server" CssClass="h3 d-block" Text="Usuario"></asp:Label>
-    <asp:Label ID="lblEmail" runat="server" CssClass="email d-block"></asp:Label>
+    <h2 class="welcome-title">¡Bienvenido a RapidiTico 🇨🇷!</h2>
+    <p class="welcome-subtitle">Gestiona tus envíos de forma rápida, segura y sencilla </p>
+    <asp:Label ID="lblUsuario" runat="server" CssClass="fw-bold d-block" Text="Usuario"></asp:Label>
+    <asp:Label ID="lblEmail" runat="server" CssClass="text-muted d-block mb-3"></asp:Label>
     <div class="home-buttons">
-        <a href="FormCliente.aspx" class="home-button btn-clientes"> Clientes </a>
-        <a href="FormEntrega.aspx" class="home-button btn-entregas"> Entregas </a>
-        <a href="FormPaquete.aspx" class="home-button btn-paquetes"> Paquetes </a>
-        <a href="FormRepartidor.aspx" class="home-button btn-repartidores"> Repartidores </a>
-    </div>
+        <a href="RastrearPaquete.aspx" class="home-button btn-rastreo"> Rastrear mi paquete </a>
+        <a href="FormEntregas.aspx" class="home-button btn-entregas"> Solicitar una entrega </a>
+        <a href="MisEntregas.aspx" class="home-button btn-historial"> Ver estado de mis entregas </a>
+        <a href="PerfilCliente.aspx" class="home-button btn-perfil"> Mi información personal </a>
+        <a href="Soporte.aspx" class="home-button btn-soporte"> Soporte y contacto </a>
+        </div>
 </div>
 
 </asp:Content>

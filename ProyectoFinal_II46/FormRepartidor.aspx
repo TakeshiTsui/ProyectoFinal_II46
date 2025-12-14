@@ -55,7 +55,7 @@
         <h2 class="form-title">Mensajería RapidiTico 🇨🇷</h2>
         <h6 class="text-muted mb-0">Registro y administración de repartidores</h6>
     </div>
-    <div class="d-flex justify-content-end mb-4">
+    <div class="d-flex justify-content-center mb-4">
         <asp:Button ID="btnCrear" runat="server" CssClass="btn btn-success btn-hover-move px-4" Text="Crear Nuevo Repartidor" OnClick="btnCrear_Click" />
     </div>
     <div class="row g-3">
