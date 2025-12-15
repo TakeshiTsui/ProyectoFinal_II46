@@ -8,8 +8,8 @@
         <div class="row mb-3">
             <div class="col-md-6">
                 <label class="form-label">Estado de la Entrega</label>
-                <asp:DropDownList ID="ddlEstado" runat="server" CssClass="form-select">
-                    <asp:ListItem Text="--Todos los estados--" Value="" />
+                <asp:DropDownList ID="ddlEstado" runat="server" CssClass="form-select" AutoPostBack="true">
+                    <asp:ListItem Text="--Todos los estados--" Value=" " />
                     <asp:ListItem Text="Pendiente" Value="Pendiente" />
                     <asp:ListItem Text="En Camino" Value="En Camino" />
                     <asp:ListItem Text="Entregado" Value="Entregado" />
@@ -17,10 +17,7 @@
                 </asp:DropDownList>
             </div>
         </div>
-        <div class="col-md-2">
-            <asp:Button ID="btnFiltrar" runat="server" text="Filtrar" CssClass="btn btn-primary w-100" OnClick="btnFiltrar_Click" />
-        </div>
-
+        
         <asp:GridView ID="gvMisEntregas" runat="server" CssClass="table table-hover table-striped aling-middle" AutoGenerateColumns="False" DataKeyNames="IdPaquete" DataSourceID="SqlDataSource1">
             <Columns>
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
@@ -33,7 +30,7 @@
                 <asp:BoundField DataField="EstadoEntrega" HeaderText="Estado del Paquete" SortExpression="EstadoEntrega" />
                 </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString %>" SelectCommand="SELECT Cliente.Nombre, Cliente.Apellido, Paquete.IdPaquete, Paquete.NombrePaquete, Paquete.FechaEnvio, Paquete.Destino, Entrega.FechaEntrega, Entrega.EstadoEntrega FROM Cliente AS Cliente INNER JOIN Paquete AS Paquete ON Cliente.IdCliente = Paquete.IdCliente INNER JOIN Entrega AS Entrega ON Paquete.IdPaquete = Entrega.IdPaquete WHERE (@Estado = '' or Entrega.EstadoEntrega = @Estado)">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString %>" SelectCommand="SELECT Cliente.Nombre, Cliente.Apellido, Paquete.IdPaquete, Paquete.NombrePaquete, Paquete.FechaEnvio, Paquete.Destino, Entrega.FechaEntrega, Entrega.EstadoEntrega FROM Cliente AS Cliente INNER JOIN Paquete AS Paquete ON Cliente.IdCliente = Paquete.IdCliente INNER JOIN Entrega AS Entrega ON Paquete.IdPaquete = Entrega.IdPaquete WHERE (@Estado IS NULL OR @Estado = '' or Entrega.EstadoEntrega = @Estado)">
             <SelectParameters>
                <asp:ControlParameter Name="Estado" ControlID="ddlEstado" PropertyName="SelectedValue" Type="String" />
             </SelectParameters>

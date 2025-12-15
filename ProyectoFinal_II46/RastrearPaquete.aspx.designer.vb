@@ -48,4 +48,31 @@ Partial Public Class RastrearPaquete
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents pnlResultado As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control lblEstadoP.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblEstadoP As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control lblDestino.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblDestino As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control lblFecha.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblFecha As Global.System.Web.UI.WebControls.Label
 End Class

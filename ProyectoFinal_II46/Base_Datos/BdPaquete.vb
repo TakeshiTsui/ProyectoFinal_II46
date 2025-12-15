@@ -78,4 +78,15 @@ Public Class BdPaquete
             Return New DataTable()
         End Try
     End Function
+    Public Function rastrear(paquete As Paquete) As DataTable
+        Try
+            Dim sql As String = "SELECT Estado, Destino, FechaEnvio FROM Paquete WHERE IdPaquete = @IdPaquete"
+            Dim parametros As New List(Of SqlParameter) From {
+                New SqlParameter("@IdPaquete", paquete.IdPaquete)
+            }
+            Return DbHelper.ExecuteQuery(sql, parametros)
+        Catch ex As Exception
+            Return New DataTable
+        End Try
+    End Function
 End Class

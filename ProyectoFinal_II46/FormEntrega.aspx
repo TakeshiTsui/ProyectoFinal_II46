@@ -57,7 +57,7 @@
             <div class="col-md-6">
                 <label class="form-label">Estado de la Entrega</label>
                 <asp:DropDownList ID="ddlEstadoEntrega" runat="server" CssClass="form-control">
-                    <asp:ListItem Text="Seleccione estado" Value="" />
+                    <asp:ListItem Text="Seleccione estado" Value=" " />
                     <asp:ListItem Text="Pendiente" Value="Pendiente" />
                     <asp:ListItem Text="En Camino" Value="En Camino" />
                     <asp:ListItem Text="Entregado" Value="Entregado" />
