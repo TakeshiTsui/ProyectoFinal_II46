@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class FormEntrega
+Partial Public Class FormEntregas2
 
     '''<summary>
     '''Control Editando.

@@ -73,7 +73,7 @@
     <asp:Label ID="lblEmail" runat="server" CssClass="text-muted d-block mb-3"></asp:Label>
     <div class="home-buttons">
         <a href="RastrearPaquete.aspx" class="home-button btn-rastreo"> Rastrear mi paquete </a>
-        <a href="FormEntregas.aspx" class="home-button btn-entregas"> Solicitar una entrega </a>
+        <a href="FormEntregas2.aspx" class="home-button btn-entregas"> Solicitar una entrega </a>
         <a href="MisEntregas.aspx" class="home-button btn-historial"> Ver estado de mis entregas </a>
         <a href="PerfilCliente.aspx" class="home-button btn-perfil"> Mi información personal </a>
         <a href="Soporte.aspx" class="home-button btn-soporte"> Soporte y contacto </a>

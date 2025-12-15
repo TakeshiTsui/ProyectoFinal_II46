@@ -1,7 +1,6 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="FormEntrega.aspx.vb" Inherits="ProyectoFinal_II46.FormEntrega" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="FormEntregas2.aspx.vb" Inherits="ProyectoFinal_II46.FormEntregas2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
-<style>
+    <style>
     .btn-hover-move {
         transition: transform 0.5s ease, box-shadow 0.3s;
     }
@@ -56,7 +55,7 @@
             </div>
             <div class="col-md-6">
                 <label class="form-label">Estado de la Entrega</label>
-                <asp:DropDownList ID="ddlEstadoEntrega" runat="server" CssClass="form-control">
+                <asp:DropDownList ID="ddlEstadoEntrega" runat="server" CssClass="form-control" ReadOnly="true">
                     <asp:ListItem Text="Seleccione estado" Value="" />
                     <asp:ListItem Text="Pendiente" Value="Pendiente" />
                     <asp:ListItem Text="En Camino" Value="En Camino" />
@@ -70,7 +69,7 @@
             </div>
         </div>
         <div class="mt-4 d-flex gap-2 flex-wrap">
-            <asp:Button ID="btnCrear" runat="server" CssClass="btn btn-success btn-hover-move" Text="Ingresar Nueva Entrega" OnClick="btnCrear_Click" />
+            <asp:Button ID="btnCrear" runat="server" CssClass="btn btn-success btn-hover-move" Text="Solicitar Nuevo Envío" OnClick="btnCrear_Click" />
             <asp:Button ID="btnGuardar" runat="server" CssClass="btn btn-primary btn-hover-move" Text="Guardar" OnClick="btnGuardar_Click" />
             <asp:Button ID="btnActualizar" runat="server" CssClass="btn btn-primary btn-hover-move" Text="Actualizar" OnClick="btnActualizar_Click" />
             <asp:Button ID="btnBorrar" runat="server" CssClass="btn btn-danger btn-hover-move" Text="Borrar" OnClick="btnBorrar_Click" />
@@ -105,4 +104,5 @@
     <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString %>" ProviderName="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Entrega]">
     </asp:SqlDataSource>
 </div>
+
 </asp:Content>

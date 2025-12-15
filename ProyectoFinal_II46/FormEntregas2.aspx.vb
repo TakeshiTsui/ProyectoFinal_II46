@@ -1,5 +1,5 @@
 ﻿Imports ProyectoFinal_II46.Utils.SwalUtils
-Public Class FormEntrega
+Public Class FormEntregas2
     Inherits System.Web.UI.Page
     Public entrega As New Entrega()
     Protected BdHelper As New BdEntrega()
@@ -132,7 +132,6 @@ Public Class FormEntrega
         CType(GvEntregas.Columns(8), CommandField).ShowDeleteButton = False 'ajusta el índice según tu GridView
         GvEntregas.DataBind()
     End Sub
-
     Protected Sub GvEntregas_RowUpdating(sender As Object, e As GridViewUpdateEventArgs)
         Try
             If txtIdPaquete.Text = "" Or txtIdRepartidor.Text = "" Or txtFechaEntrega.Text = "" Or ddlEstadoEntrega.SelectedValue = "" Then

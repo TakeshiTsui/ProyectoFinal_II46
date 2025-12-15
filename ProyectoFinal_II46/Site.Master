@@ -100,10 +100,11 @@
             <ul class="navbar-nav flex-grow-1">
 
                 <% If (Autenticado = 1) Then %>
-                <li class="nav-item"><a class="nav-link" runat="server" href="~/FormCliente">Clientes</a></li>
-                <li class="nav-item"><a class="nav-link" runat="server" href="~/FormEntrega">Entregas</a></li>
-                <li class="nav-item"><a class="nav-link" runat="server" href="~/FormPaquete">Paquetes</a></li>
-                <li class="nav-item"><a class="nav-link" runat="server" href="~/FormRepartidor">Repartidores</a></li>
+                <li class="nav-item"><a class="nav-link" runat="server" href="~/RastrearPaquete.aspx">Rastrear mi paquete</a></li>
+                <li class="nav-item"><a class="nav-link" runat="server" href="~/FormEntregas2.aspx">Solicitar nueva entrega</a></li>
+                <li class="nav-item"><a class="nav-link" runat="server" href="~/MisEntregas.aspx">Historial de Entregas</a></li>
+                <li class="nav-item"><a class="nav-link" runat="server" href="~/PerfilCliente.aspx">Mi Perfil</a></li>
+                <li class="nav-item"><a class="nav-link" runat="server" href="~/Soporte.aspx">Contactenos</a></li>
                 <% End If %>
                 <% If (Autenticado = 2) Then %>
                 <li class="nav-item"><a class="nav-link" runat="server" href="~/Registro.aspx">Registro</a></li>

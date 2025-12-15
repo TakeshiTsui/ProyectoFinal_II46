@@ -5,4 +5,7 @@
 
     End Sub
 
+    Protected Sub btnFiltrar_Click(sender As Object, e As EventArgs)
+        gvMisEntregas.DataBind()
+    End Sub
 End Class

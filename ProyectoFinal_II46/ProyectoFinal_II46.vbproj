@@ -148,6 +148,7 @@
     <Content Include="favicon.ico" />
     <Content Include="FormCliente.aspx" />
     <Content Include="FormEntrega.aspx" />
+    <Content Include="FormEntregas2.aspx" />
     <Content Include="FormPaquete.aspx" />
     <Content Include="FormRepartidor.aspx" />
     <Content Include="Global.asax" />
@@ -264,6 +265,13 @@
     </Compile>
     <Compile Include="FormEntrega.aspx.vb">
       <DependentUpon>FormEntrega.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="FormEntregas2.aspx.designer.vb">
+      <DependentUpon>FormEntregas2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormEntregas2.aspx.vb">
+      <DependentUpon>FormEntregas2.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="FormPaquete.aspx.designer.vb">
