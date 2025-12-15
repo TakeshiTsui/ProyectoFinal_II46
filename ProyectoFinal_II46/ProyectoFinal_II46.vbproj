@@ -317,7 +317,7 @@
     </Compile>
     <Compile Include="PerfilCliente.aspx.vb">
       <DependentUpon>PerfilCliente.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RastrearPaquete.aspx.designer.vb">
       <DependentUpon>RastrearPaquete.aspx</DependentUpon>
@@ -345,7 +345,7 @@
     </Compile>
     <Compile Include="Soporte.aspx.vb">
       <DependentUpon>Soporte.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Utils\DbHelper.vb" />
     <Compile Include="Utils\Simple3ds.vb" />

@@ -18,5 +18,5 @@
     </div>
     <asp:TextBox id="txtAsunto" runat="server" cssclass="form-control mb-3" placeholder="Asunto" />
     <asp:TextBox ID="txtMensaje" runat="server" CssClass="form-control mb-3" textmode="MultiLine" rows="4" placeholder="Describe tu problema...." />
-    <asp:Button id="btnEnviar" Text="Enviar mensaje" cssclass="btn btn-warning w-100" runat="server" />
+    <asp:Button id="btnEnviar" Text="Enviar mensaje" cssclass="btn btn-warning w-100" runat="server" onclick="btnEnviar_Click"/>
 </asp:Content>

@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class PerfilCliente
 
     '''<summary>
+    '''Control Editando.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Editando As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
     '''Control txtNombre.
     '''</summary>
     '''<remarks>
@@ -59,11 +68,20 @@ Partial Public Class PerfilCliente
     Protected WithEvents txtDireccion As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control txtActualizar.
+    '''Control btnGuardar.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtActualizar As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btnGuardar As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control BtnActualizar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents BtnActualizar As Global.System.Web.UI.WebControls.Button
 End Class

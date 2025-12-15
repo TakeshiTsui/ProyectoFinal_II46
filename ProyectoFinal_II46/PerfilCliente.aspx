@@ -24,6 +24,7 @@
             color: #333;
         }
     </style>
+    <asp:HiddenField ID="Editando" runat="server" />
     <div class="perfil-container">
         <h3 class="perfil-title"> Mi Perfil</h3>
         <p class="text-muted text-center"> Revisa y actualiza tu información personal</p>
@@ -49,7 +50,10 @@
                 <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control perfil-info" />
             </div>
             <div class="text-bg-danger-end mt-4">
-                <asp:Button ID="txtActualizar" Text ="Guardar Cambios" cssclass="btn btn-primary px-4" runat="server" />
+                <asp:Button ID="btnGuardar" Text ="Guardar Cambios" cssclass="btn btn-primary px-4" runat="server" onclick="btnGuardar_Click"/>
+            </div>
+            <div class="text-bg-danger-end mt-4">
+                <asp:Button ID="BtnActualizar" Text="Actualizar Datos" CssClass="btn btn-primary px-4" runat="server" onclick="BtnActualizar_Click" />
             </div>
         </div>
     </div>

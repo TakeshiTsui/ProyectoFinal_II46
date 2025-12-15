@@ -86,4 +86,7 @@ Public Class BdCliente
             Return Nothing
         End Try
     End Function
+    'Public Function actualizarDatos(Cliente As Cliente) As String
+
+    'End Function
 End Class
