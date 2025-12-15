@@ -64,11 +64,11 @@ Public Class BdCliente
             Return New DataTable()
         End Try
     End Function
-    Public Function ObtenerCliente(correo As String) As Cliente
+    Public Function ObtenerCliente(email As String) As Cliente
         Try
-            Dim sql As String = "SELECT * FROM Cliente WHERE Correo = @Correo"
+            Dim sql As String = "SELECT C.* FROM Cliente C INNER JOIN Usuarios U ON U.Email = C.Correo WHERE Email = @Email"
             Dim parametros As New List(Of SqlParameter) From {
-             New SqlParameter("@Correo", correo)
+             New SqlParameter("@Email", email)
             }
             Dim dt As DataTable = dbhelper.ExecuteQuery(sql, parametros)
             If dt.Rows.Count = 0 Then

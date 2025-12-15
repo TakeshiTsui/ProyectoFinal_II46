@@ -7,11 +7,13 @@
 
     Public Sub cargarDatosCliente()
         Try
-            Dim cliente As Cliente = CType(Session("Cliente"), Cliente)
-            If cliente Is Nothing Then
+            Dim usuario As Usuario = CType(Session("Usuario"), Usuario)
+            If usuario Is Nothing Then
                 Response.Redirect("Home.aspx")
-                Return
             End If
+
+            Dim BdCliente As New BdCliente()
+            Dim cliente As Cliente = BdCliente.ObtenerCliente(Usuario.Email)
             txtNombre.Text = cliente.Nombre
             txtApellido.Text = cliente.Apellido
             txtTelefono.Text = cliente.Telefono
