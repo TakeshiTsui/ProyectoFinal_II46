@@ -18,13 +18,20 @@ Public Class Login
             ' Redirigir a la página principal o dashboard
             Dim User As Usuario = dbHelper.GetUser(Usuario) ' Obtener el usuario
             Session("Usuario") = User ' Guardar el usuario en la sesión
+            If User.Rol = "1" Then
+                Dim dbcliente As New BdCliente()
+                Dim cliente As Cliente = dbcliente.ObtenerCliente(User.Rol)
+                Session("Cliente") = cliente
+                Response.Redirect("Home.aspx") ' Redirigir a la página principal
+                Return
+            End If
             If User.Rol = "2" Then
                 Response.Redirect("Admin.aspx") ' Redirigir a la página de administración si es admin
                 ShowSuccessMessage(Me, "Éxito", "Inicio de sesión exitoso.")
                 Return
             End If
             ShowSuccessMessage(Me, "Éxito", "Inicio de sesión exitoso.")
-            Response.Redirect("Home.aspx") ' Redirigir a la página principal
+
         Else
             ' Mostrar mensaje de error
             SwalUtils.ShowErrorMessage(Me, "Error de inicio de sesión", "Credenciales incorrectas. Inténtelo de nuevo.")

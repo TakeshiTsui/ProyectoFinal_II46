@@ -64,4 +64,26 @@ Public Class BdCliente
             Return New DataTable()
         End Try
     End Function
+    Public Function ObtenerCliente(correo As String) As Cliente
+        Try
+            Dim sql As String = "SELECT * FROM Cliente WHERE Correo = @Correo"
+            Dim parametros As New List(Of SqlParameter) From {
+             New SqlParameter("@Correo", correo)
+            }
+            Dim dt As DataTable = dbhelper.ExecuteQuery(sql, parametros)
+            If dt.Rows.Count = 0 Then
+                Return Nothing
+            End If
+            Dim c As New Cliente()
+            c.Idcliente = Convert.ToInt32(dt.Rows(0)("idCliente"))
+            c.Nombre = dt.Rows(0)("Nombre").ToString
+            c.Apellido = dt.Rows(0)("Apellido").ToString
+            c.Telefono = dt.Rows(0)("Telefono").ToString
+            c.Direccion = dt.Rows(0)("Direccion").ToString
+            c.Correo = dt.Rows(0)("Correo").ToString
+            Return c
+        Catch ex As Exception
+            Return Nothing
+        End Try
+    End Function
 End Class
