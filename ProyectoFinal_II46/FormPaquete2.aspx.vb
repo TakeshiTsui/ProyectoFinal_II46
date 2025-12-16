@@ -15,7 +15,6 @@ Public Class FormPaquete2
             txtPrecio.Visible = False
             txtPeso.Visible = False
             txtFechaEnvio.Visible = False
-            'txtEstado.Visible = False
             ddlEstado.Visible = False
             txtDestino.Visible = False
             btnGuardar.Visible = False
@@ -43,7 +42,6 @@ Public Class FormPaquete2
         txtPrecio.Visible = True
         txtPeso.Visible = True
         txtFechaEnvio.Visible = True
-        'txtEstado.Visible = True
         ddlEstado.Visible = True
         txtDestino.Visible = True
         btnGuardar.Visible = True
