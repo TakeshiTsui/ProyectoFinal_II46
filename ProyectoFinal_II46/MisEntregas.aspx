@@ -1,7 +1,23 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="MisEntregas.aspx.vb" Inherits="ProyectoFinal_II46.MisEntregas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
-    <div class="container mt-5">
+    <style>
+        body {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .entregas-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 35px;
+            border-radius: 20px;
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+    </style>
+    
+    <div class="entregas-container">
         <h3 class="fw-bold mb-3">Mis Entregas</h3>
         <p class="text-muted">Consulta el estado de tus envíos</p>
 

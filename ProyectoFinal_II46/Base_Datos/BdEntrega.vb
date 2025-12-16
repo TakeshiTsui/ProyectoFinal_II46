@@ -41,7 +41,7 @@ Public Class BdEntrega
                     IdPaquete = @IdPaquete,
                     IdRepartidor = @IdRepartidor,
                     FechaEntrega = @FechaEntrega,
-                    Estadoentrega = @EstadoEntrega,
+                    EstadoEntrega = @EstadoEntrega,
                     Observaciones = @Observaciones
                  WHERE IdEntrega = @IdEntrega"
             Dim parametros As New List(Of SqlParameter) From {
@@ -58,36 +58,4 @@ Public Class BdEntrega
             Return False
         End Try
     End Function
-
-    Public Function filtraporentrega(EstadoEntrega As String) As DataTable
-        Try
-            Dim sql As String = "SELECT e.IdEntrega, e.IdPaquete, e.IdRepartidor, e.FechaEntrega, e.Observaciones,
-                                 p.NombrePaquete, p.Descripcion, p.Precio, p.Peso, p.FechaEnvio, p.Estado, p.Destino
-                                 FROM Entrega e
-                                 JOIN Paquete p ON e.IdPaquete = p.IdPaquete
-                                 WHERE p.EstadoEntrega = @EstadoEntraga"
-            Dim parametros As New List(Of SqlParameter) From {
-                New SqlParameter("@EstadoEntrega", EstadoEntrega)
-            }
-            Return DbHelper.ExecuteQuery(sql, parametros)
-        Catch ex As Exception
-            Return New DataTable()
-        End Try
-    End Function
-    Public Function HistorialRepartidor(idRepartidor As Integer) As DataTable
-        Try
-            Dim sql As String = "SELECT e.IdEntrega, e.IdPaquete, e.IdRepartidor, e.FechaEntrega, e.Observaciones,
-                                 p.NombrePaquete, p.Descripcion, p.Precio, p.Peso, p.FechaEnvio, p.Estado, p.Destino
-                                 FROM Entrega e
-                                 JOIN Paquete p ON e.IdPaquete = p.IdPaquete
-                                 WHERE e.IdRepartidor = @IdRepartidor"
-            Dim parametros As New List(Of SqlParameter) From {
-                New SqlParameter("@IdRepartidor", idRepartidor)
-            }
-            Return DbHelper.ExecuteQuery(sql, parametros)
-        Catch ex As Exception
-            Return New DataTable()
-        End Try
-    End Function
-
 End Class

@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Soporte.aspx.vb" Inherits="ProyectoFinal_II46.Soporte" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
+        body {
+            background: linear-gradient(135deg, #1d3557, #457b9d);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
         support-box {
             max-width: 700px;
             margin: 60px auto;

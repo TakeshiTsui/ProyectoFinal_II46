@@ -2,6 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <style>
+        body {
+            background: linear-gradient(135deg, #f4a261, #e76f51);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
         .tracking-container {
             max-width: 700px;
             margin: 70px auto;

@@ -1,26 +1,33 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="FormEntregas2.aspx.vb" Inherits="ProyectoFinal_II46.FormEntregas2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-    .btn-hover-move {
-        transition: transform 0.5s ease, box-shadow 0.3s;
-    }
+        body {
+            background: linear-gradient(135deg, #2a9d8f, #52b788);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
 
-    .btn-hover-move:hover {
-        transform: translateY(-3px) scale(1.03);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    }
+        .btn-hover-move {
+            transition: transform 0.5s ease, box-shadow 0.3s;
+        }
 
-    .card-custom {
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.07);
-        padding: 20px;
-        margin-bottom: 20px;
-    }
+            .btn-hover-move:hover {
+                transform: translateY(-3px) scale(1.03);
+                box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            }
 
-    .section-title {
-        font-weight: 600;
-        margin-bottom: 15px;
-    }
+        .card-custom {
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
 </style>
 
 <asp:HiddenField ID="Editando" runat="server" />
@@ -84,16 +91,16 @@
             runat="server"
             AutoGenerateColumns="False"
             DataSourceID="SqlDataSource4"
-            OnRowUpdating="GvEntregas_RowUpdating"
             OnRowCancelingEdit="GvEntregas_RowCancelingEdit"
             OnSelectedIndexChanged="GvEntregas_SelectedIndexChanged"
-            DataKeyNames="IdEntrega">
+            DataKeyNames="IdEntrega, IdPaquete, IdRepartidor">
             <Columns>
                 <asp:CommandField ShowSelectButton="true" ControlStyle-CssClass="btn btn-success btn-sm" />
-                <asp:CommandField ShowEditButton="true" ControlStyle-CssClass="btn btn-primary btn-sm" />
                 <asp:BoundField DataField="IdEntrega" HeaderText="IdEntrega" Visible="false" />
-                <asp:BoundField DataField="IdPaquete" HeaderText="Paquete" />
-                <asp:BoundField DataField="IdRepartidor" HeaderText="Repartidor" />
+                <asp:BoundField DataField="IdPaquete" HeaderText="Paquete" Visible="false" />
+                <asp:BoundField DataField="IdRepartidor" HeaderText="Repartidor" Visible="false" />
+                <asp:BoundField DataField="NombrePaquete" HeaderText="Nombre Paquete" />
+                <asp:BoundField DataField="NombreRepartidor" HeaderText="Repartidor" />
                 <asp:BoundField DataField="FechaEntrega" HeaderText="Fecha" />
                 <asp:BoundField DataField="EstadoEntrega" HeaderText="Estado" />
                 <asp:BoundField DataField="Observaciones" HeaderText="Observaciones" />
@@ -101,7 +108,7 @@
             </Columns>
         </asp:GridView>
     </div>
-    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString %>" ProviderName="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Entrega]">
+    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString %>" ProviderName="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString.ProviderName %>" SelectCommand="SELECT Entrega.IdEntrega, Entrega.IdPaquete, Paquete.NombrePaquete, Entrega.IdRepartidor, Repartidor.Nombre + ' ' + Repartidor.Apellido AS NombreRepartidor, Entrega.FechaEntrega, Entrega.EstadoEntrega, Entrega.Observaciones FROM Entrega AS Entrega INNER JOIN Paquete AS Paquete ON Entrega.IdPaquete = Paquete.IdPaquete INNER JOIN Repartidor AS Repartidor ON Entrega.IdRepartidor = Repartidor.IdRepartidor">
     </asp:SqlDataSource>
 </div>
 

@@ -2,6 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <style>
+        body{
+            background: linear-gradient(135deg, #232526, #414345);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
         .perfil-container {
             max-width: 650px;
             margin: 60px auto;

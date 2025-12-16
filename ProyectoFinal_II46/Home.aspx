@@ -8,7 +8,7 @@
     }
 
     .home-container {
-        max-width: 620px;
+        max-width: 700px;
         margin: 70px auto;
         padding: 40px;
         border-radius: 20px;
@@ -35,9 +35,9 @@
 
     /* Botones */
     .home-buttons {
-        margin-top: 25px;
-        display: grid;
-        grid-template-columns: 1fr;
+        margin-top: 35px;
+        display: flex;
+        flex-direction: row ;
         gap: 16px;
     }
 
@@ -58,7 +58,7 @@
         transform: translateY(-4px);
         box-shadow: 0 6px 18px rgba(0,0,0,0.25);
     }
-    .btn-ratreo { background: #e63946; }
+    .btn-rastreo { background: #c62525; }
     .btn-entregas { background: #2a9d8f; }
     .btn-historial { background: #457b9d; }
     .btn-perfil  { background: #6c757d; }
@@ -72,11 +72,11 @@
     <asp:Label ID="lblUsuario" runat="server" CssClass="fw-bold d-block" Text="Usuario"></asp:Label>
     <asp:Label ID="lblEmail" runat="server" CssClass="text-muted d-block mb-3"></asp:Label>
     <div class="home-buttons">
-        <a href="RastrearPaquete.aspx" class="home-button btn-rastreo"> Rastrear mi paquete </a>
-        <a href="FormEntregas2.aspx" class="home-button btn-entregas"> Solicitar una entrega </a>
-        <a href="MisEntregas.aspx" class="home-button btn-historial"> Ver estado de mis entregas </a>
-        <a href="PerfilCliente.aspx" class="home-button btn-perfil"> Mi información personal </a>
-        <a href="Soporte.aspx" class="home-button btn-soporte"> Soporte y contacto </a>
+        <a href="RastrearPaquete.aspx" class="home-btn btn-rastreo"> Rastrear mi paquete </a>
+        <a href="FormEntregas2.aspx" class="home-btn btn-entregas"> Solicitar una entrega </a>
+        <a href="MisEntregas.aspx" class="home-btn btn-historial"> Ver estado de mis entregas </a>
+        <a href="PerfilCliente.aspx" class="home-btn btn-perfil"> Mi información personal </a>
+        <a href="Soporte.aspx" class="home-btn btn-soporte"> Soporte y contacto </a>
         </div>
 </div>
 
