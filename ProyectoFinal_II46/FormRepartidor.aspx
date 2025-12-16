@@ -1,6 +1,13 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="FormRepartidor.aspx.vb" Inherits="ProyectoFinal_II46.FormRepartidor" MaintainScrollPositionOnPostBack="true" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
+        body {
+            background: linear-gradient(135deg, #4a90e2, #50c9c3);
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
         /*Card Principal*/
         .form-card {
             max-width: 900px;
@@ -49,6 +56,14 @@
             border-radius: 12px;
             overflow: hidden;
         }
+        .repartidores-container {
+            max-width: 1500px;
+            margin: 60px auto;
+            padding: 35px;
+            border-radius: 20px;
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
 </style>
 <asp:HiddenField ID="Editando" runat="server" />
 <div class="text-center mb-4">
@@ -83,7 +98,7 @@
 </div>
     <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
 
-<asp:GridView ID="GvRepartidores" CssClass="table table-striped table-hover aling-middle" runat="server" AutoGenerateColumns="False"
+<asp:GridView ID="GvRepartidores" CssClass="repartidores-container table table-striped table-hover aling-middle" runat="server" AutoGenerateColumns="False"
     DataKeyNames="IdRepartidor" DataSourceID="SqlDataSource3"
     OnRowDeleting="GvRepartidores_RowDeleting"
     OnRowCancelingEdit="GvRepartidores_RowCancelingEdit"

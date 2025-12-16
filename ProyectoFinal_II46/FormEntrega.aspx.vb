@@ -21,8 +21,7 @@ Public Class FormEntrega
             btnBorrar.Visible = False
             btnCancelar.Visible = False
             CType(GvEntregas.Columns(0), CommandField).ShowSelectButton = False
-            CType(GvEntregas.Columns(1), CommandField).ShowEditButton = False
-            CType(GvEntregas.Columns(8), CommandField).ShowDeleteButton = False 'ajusta el índice según tu GridView
+            CType(GvEntregas.Columns(9), CommandField).ShowDeleteButton = False 'ajusta el índice según tu GridView
             GvEntregas.DataBind()
         End If
     End Sub
@@ -51,8 +50,7 @@ Public Class FormEntrega
         btnBorrar.Visible = True
         btnCancelar.Visible = True
         CType(GvEntregas.Columns(0), CommandField).ShowSelectButton = True
-        CType(GvEntregas.Columns(1), CommandField).ShowEditButton = True
-        CType(GvEntregas.Columns(8), CommandField).ShowDeleteButton = True 'ajusta el índice según tu GridView
+        CType(GvEntregas.Columns(9), CommandField).ShowDeleteButton = True 'ajusta el índice según tu GridView
         GvEntregas.DataBind()
     End Sub
 
@@ -128,35 +126,9 @@ Public Class FormEntrega
         btnBorrar.Visible = False
         btnCancelar.Visible = False
         CType(GvEntregas.Columns(0), CommandField).ShowSelectButton = False
-        CType(GvEntregas.Columns(1), CommandField).ShowEditButton = False
-        CType(GvEntregas.Columns(8), CommandField).ShowDeleteButton = False 'ajusta el índice según tu GridView
+        CType(GvEntregas.Columns(9), CommandField).ShowDeleteButton = False 'ajusta el índice según tu GridView
         GvEntregas.DataBind()
     End Sub
-
-    Protected Sub GvEntregas_RowUpdating(sender As Object, e As GridViewUpdateEventArgs)
-        Try
-            If txtIdPaquete.Text = "" Or txtIdRepartidor.Text = "" Or txtFechaEntrega.Text = "" Or ddlEstadoEntrega.SelectedValue = "" Then
-                ShowErrorMessage(Me, "Error", "❌ Por favor, complete todos los campos obligatorios.")
-                Return
-            End If
-            Dim idEntrega As Integer = Convert.ToInt32(GvEntregas.DataKeys(e.RowIndex).Value)
-            Dim entrega As New Entrega With {
-                .IdEntrega = idEntrega,
-                .IdPaquete = Convert.ToInt32(e.NewValues("IdPaquete")),
-                .IdRepartidor = Convert.ToInt32(e.NewValues("IdRepartidor")),
-                .FechaEntrega = Convert.ToDateTime(e.NewValues("FechaEntrega")),
-                .EstadoEntrega = e.NewValues("EstadoEntrega").ToString(),
-                .Observaciones = e.NewValues("Observaciones").ToString()
-            }
-            BdHelper.update(entrega)
-            GvEntregas.EditIndex = -1
-            GvEntregas.DataBind()
-            ShowSuccessMessage(Me, "Actualizado", "✅ Datos de la entrega actualizados correctamente.")
-        Catch ex As Exception
-            ShowErrorMessage(Me, "Error", "❌ Error al actualizar la entrega: " & ex.Message)
-        End Try
-    End Sub
-
     Protected Sub GvEntregas_RowCancelingEdit(sender As Object, e As GridViewCancelEditEventArgs)
         GvEntregas.EditIndex = -1
         GvEntregas.DataBind()
@@ -166,12 +138,15 @@ Public Class FormEntrega
         Try
             btnGuardar.Enabled = False
             Dim row As GridViewRow = GvEntregas.SelectedRow
-            Dim idEntrega As Integer = Convert.ToInt32(GvEntregas.DataKeys(row.RowIndex).Value)
-            txtIdPaquete.Text = row.Cells(3).Text
-            txtIdRepartidor.Text = row.Cells(4).Text
-            txtFechaEntrega.Text = CDate(row.Cells(5).Text).ToString("yyyy-MM-dd")
-            ddlEstadoEntrega.SelectedValue = row.Cells(6).Text
-            txtObservaciones.Text = row.Cells(7).Text
+            Dim key = GvEntregas.DataKeys(row.RowIndex)
+            Dim idEntrega As Integer = Convert.ToInt32(key("IdEntrega"))
+            Dim idPaquete As Integer = Convert.ToInt32(key("IdPaquete"))
+            Dim idRepartidor As Integer = Convert.ToInt32(key("IdRepartidor"))
+            txtIdPaquete.Text = idPaquete.ToString()
+            txtIdRepartidor.Text = idRepartidor.ToString()
+            txtFechaEntrega.Text = CDate(row.Cells(6).Text).ToString("yyyy-MM-dd")
+            ddlEstadoEntrega.SelectedValue = row.Cells(7).Text
+            txtObservaciones.Text = row.Cells(8).Text
             Editando.Value = idEntrega.ToString()
         Catch ex As Exception
             ShowErrorMessage(Me, "Error", "Error al seleccionar la entrega: " & ex.Message)

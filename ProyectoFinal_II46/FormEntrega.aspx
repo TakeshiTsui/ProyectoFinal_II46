@@ -2,6 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 <style>
+    body {
+        background: linear-gradient(135deg, #2a9d8f, #52b788);
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
     .btn-hover-move {
         transition: transform 0.5s ease, box-shadow 0.3s;
     }
@@ -85,16 +91,16 @@
             runat="server"
             AutoGenerateColumns="False"
             DataSourceID="SqlDataSource4"
-            OnRowUpdating="GvEntregas_RowUpdating"
             OnRowCancelingEdit="GvEntregas_RowCancelingEdit"
             OnSelectedIndexChanged="GvEntregas_SelectedIndexChanged"
-            DataKeyNames="IdEntrega">
+            DataKeyNames="IdEntrega, IdPaquete, IdRepartidor">
             <Columns>
                 <asp:CommandField ShowSelectButton="true" ControlStyle-CssClass="btn btn-success btn-sm" />
-                <asp:CommandField ShowEditButton="true" ControlStyle-CssClass="btn btn-primary btn-sm" />
                 <asp:BoundField DataField="IdEntrega" HeaderText="IdEntrega" Visible="false" />
-                <asp:BoundField DataField="IdPaquete" HeaderText="Paquete" />
-                <asp:BoundField DataField="IdRepartidor" HeaderText="Repartidor" />
+                <asp:BoundField DataField="IdPaquete" HeaderText="Paquete" visible="false" />
+                <asp:BoundField DataField="IdRepartidor" HeaderText="Repartidor" visible="false" />
+                <asp:BoundField DataField="NombrePaquete" HeaderText="Nombre Paquete" />
+                <asp:BoundField DataField="NombreRepartidor" HeaderText="Repartidor" />
                 <asp:BoundField DataField="FechaEntrega" HeaderText="Fecha" />
                 <asp:BoundField DataField="EstadoEntrega" HeaderText="Estado" />
                 <asp:BoundField DataField="Observaciones" HeaderText="Observaciones" />
@@ -102,7 +108,7 @@
             </Columns>
         </asp:GridView>
     </div>
-    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString %>" ProviderName="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Entrega]">
+    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString %>" ProviderName="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString.ProviderName %>" SelectCommand="SELECT Entrega.IdEntrega, Entrega.IdPaquete, Paquete.NombrePaquete, Entrega.IdRepartidor, Repartidor.Nombre + ' ' + Repartidor.Apellido AS NombreRepartidor, Entrega.FechaEntrega, Entrega.EstadoEntrega, Entrega.Observaciones FROM Entrega AS Entrega INNER JOIN Paquete AS Paquete ON Entrega.IdPaquete = Paquete.IdPaquete INNER JOIN Repartidor AS Repartidor ON Entrega.IdRepartidor = Repartidor.IdRepartidor">
     </asp:SqlDataSource>
 </div>
 </asp:Content>

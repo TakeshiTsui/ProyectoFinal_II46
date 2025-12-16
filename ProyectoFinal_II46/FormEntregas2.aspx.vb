@@ -45,6 +45,8 @@ Public Class FormEntregas2
         txtIdRepartidor.Visible = True
         txtFechaEntrega.Visible = True
         ddlEstadoEntrega.Visible = True
+        ddlEstadoEntrega.SelectedIndex = 1
+        ddlEstadoEntrega.Enabled = False
         txtObservaciones.Visible = True
         btnGuardar.Visible = True
         btnActualizar.Visible = True

@@ -2,6 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 <style>
+    body {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+
     .card-custom {
         border-radius: 12px;
         padding: 25px;
@@ -22,8 +29,19 @@
         transform: translateY(-3px);
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
     }
+    .paquetes-container {
+        max-width: 1500px;
+        margin: 60px auto;
+        padding: 35px;
+        border-radius: 20px;
+        background: #ffffff;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
 </style>
 <asp:HiddenField ID="Editando" runat="server" />
+    <%If (User.IsInRole = 2) Then
+
+        End If %>
 <div class="container mt-4 mb-4">
     <div class="card-custom">
         <h3 class="text-primary">📦 Registro de Paquetes - RapidiTico</h3>
@@ -87,7 +105,7 @@
     </div>
 </div>
 <asp:GridView ID="GvPaquete"
-    CssClass="table table-striped table-bordered table-hover mt-4"
+    CssClass="paquetes-container table table-striped table-bordered table-hover mt-4"
     runat="server" AutoGenerateColumns="False"
     DataKeyNames="IdCliente" DataSourceID="SqlDataSource5"
     OnRowDeleting="GvPaquete_RowDeleting"
