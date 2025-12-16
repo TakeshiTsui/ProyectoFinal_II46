@@ -32,7 +32,7 @@
     </style>
     <asp:HiddenField ID="Editando" runat="server" />
     <div class="perfil-container">
-        <h3 class="perfil-title"> Mi Perfil</h3>
+        <h3 class="perfil-title"> 👤 Mi Perfil</h3>
         <p class="text-muted text-center"> Revisa y actualiza tu información personal</p>
         <div class="row g-3">
             <div class="col-md-6">

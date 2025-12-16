@@ -18,7 +18,7 @@
     </style>
     
     <div class="entregas-container">
-        <h3 class="fw-bold mb-3">Mis Entregas</h3>
+        <h3 class="fw-bold mb-3">📋 Historial de Entregas</h3>
         <p class="text-muted">Consulta el estado de tus envíos</p>
 
         <div class="row mb-3">

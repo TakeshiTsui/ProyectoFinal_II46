@@ -1,7 +1,6 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="FormPaquete.aspx.vb" Inherits="ProyectoFinal_II46.FormPaquete" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="FormPaquete2.aspx.vb" Inherits="ProyectoFinal_II46.FormPaquete2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
-<style>
+    <style>
     body {
         background: linear-gradient(135deg, #6a11cb, #2575fc);
         min-height: 100vh;
@@ -44,6 +43,7 @@
         <h3 class="text-primary">📦 Registro de Paquetes - RapidiTico</h3>
         <p class="text-muted">Complete la información del paquete antes de guardarlo.</p>
         <asp:Button ID="btnCrear" runat="server" CssClass="btn btn-success btn-hover-move mb-3" Text="Nuevo Paquete" OnClick="btnCrear_Click" />
+        <asp:Button ID="btnEntrega" runat="server" CssClass="btn btn-dark btn-hover-move float-end mb-3" Text="Solicitar envio" onclick="btnEntrega_Click" />
         <h5 class="section-title">Información General</h5>
         <div class="row g-3">
             <div class="col-md-6">
@@ -107,13 +107,12 @@
     DataKeyNames="IdCliente" DataSourceID="SqlDataSource5"
     OnRowDeleting="GvPaquete_RowDeleting"
     OnRowCancelingEdit="GvPaquete_RowCancelingEdit"
-    OnRowUpdating="GvPaquete_RowUpdating"
     OnSelectedIndexChanged="GvPaquete_SelectedIndexChanged">
     <Columns>
         <asp:CommandField ShowSelectButton="true" ControlStyle-CssClass="btn btn-success" />
-        <asp:CommandField ShowEditButton="true" ControlStyle-CssClass="btn btn-primary" />
         <asp:BoundField DataField="IdPaquete" HeaderText="ID" ReadOnly="True" />
         <asp:BoundField DataField="IdCliente" HeaderText="Cliente" ReadOnly="True" />
+        <asp:BoundField DataField="NombreCliente" HeaderText="Nombre Cliente" />
         <asp:BoundField DataField="NombrePaquete" HeaderText="Paquete" />
         <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
         <asp:BoundField DataField="Precio" HeaderText="Precio" />
@@ -125,6 +124,8 @@
     </Columns>
 </asp:GridView>
 
-<asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString %>" ProviderName="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Paquete]"></asp:SqlDataSource>
+<asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString %>" ProviderName="<%$ ConnectionStrings:ProyectoFinal_II46ConnectionString.ProviderName %>" SelectCommand="SELECT Paquete.IdPaquete, Cliente.IdCliente, Cliente.Nombre + ' ' + Cliente.Apellido AS NombreCliente, Paquete.NombrePaquete, Paquete.Descripcion, Paquete.Precio, Paquete.Peso, Paquete.FechaEnvio, Paquete.Estado, Paquete.Destino FROM Cliente AS Cliente INNER JOIN Paquete AS Paquete ON Cliente.IdCliente = Paquete.IdCliente">
+
+</asp:SqlDataSource>
 
 </asp:Content>

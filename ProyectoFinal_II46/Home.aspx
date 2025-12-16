@@ -59,7 +59,7 @@
         box-shadow: 0 6px 18px rgba(0,0,0,0.25);
     }
     .btn-rastreo { background: #c62525; }
-    .btn-entregas { background: #2a9d8f; }
+    .btn-paquete { background: #2a9d8f; }
     .btn-historial { background: #457b9d; }
     .btn-perfil  { background: #6c757d; }
     .btn-soporte { background: #f4a261; }
@@ -73,7 +73,7 @@
     <asp:Label ID="lblEmail" runat="server" CssClass="text-muted d-block mb-3"></asp:Label>
     <div class="home-buttons">
         <a href="RastrearPaquete.aspx" class="home-btn btn-rastreo"> Rastrear mi paquete </a>
-        <a href="FormEntregas2.aspx" class="home-btn btn-entregas"> Solicitar una entrega </a>
+        <a href="FormPaquete2.aspx" class="home-btn btn-paquete"> Registrar nuevo paquete </a>
         <a href="MisEntregas.aspx" class="home-btn btn-historial"> Ver estado de mis entregas </a>
         <a href="PerfilCliente.aspx" class="home-btn btn-perfil"> Mi información personal </a>
         <a href="Soporte.aspx" class="home-btn btn-soporte"> Soporte y contacto </a>

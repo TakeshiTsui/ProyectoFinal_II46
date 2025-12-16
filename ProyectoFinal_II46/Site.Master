@@ -101,7 +101,7 @@
 
                 <% If (Autenticado = 1) Then %>
                 <li class="nav-item"><a class="nav-link" runat="server" href="~/RastrearPaquete.aspx">Rastrear mi paquete</a></li>
-                <li class="nav-item"><a class="nav-link" runat="server" href="~/FormEntregas2.aspx">Solicitar nueva entrega</a></li>
+                <li class="nav-item"><a class="nav-link" runat="server" href="~/FormPaquete2.aspx">Registrar nuevo paquete</a></li>
                 <li class="nav-item"><a class="nav-link" runat="server" href="~/MisEntregas.aspx">Historial de Entregas</a></li>
                 <li class="nav-item"><a class="nav-link" runat="server" href="~/PerfilCliente.aspx">Mi Perfil</a></li>
                 <li class="nav-item"><a class="nav-link" runat="server" href="~/Soporte.aspx">Contactenos</a></li>
@@ -111,6 +111,7 @@
                 <li class="nav-item"><a class="nav-link" runat="server" href="~/FormCliente">Clientes</a></li>
                 <li class="nav-item"><a class="nav-link" runat="server" href="~/FormEntrega">Entregas</a></li>
                 <li class="nav-item"><a class="nav-link" runat="server" href="~/FormPaquete">Paquetes</a></li>
+                <li class="nav-iten"><a class="nav-link" runat="server" href="MisEntregas.aspx">Historial</a> </li>
                 <li class="nav-item"><a class="nav-link" runat="server" href="~/FormRepartidor">Repartidores</a></li>
                 <% End If %>
 

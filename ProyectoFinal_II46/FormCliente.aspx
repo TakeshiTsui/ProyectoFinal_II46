@@ -61,7 +61,7 @@
     <asp:HiddenField ID="Editando" runat="server" />
     <div class="text-center mb-4">
         <h2 class="fw-bold">Mensajería RapidiTico 🇨🇷</h2>
-        <p class="text-muted">Gestión de Clientes</p>
+        <p class="text-muted">👤 Gestión de Clientes</p>
 
         <div class="d-flex justify-content-center mb-4">
             <asp:Button ID="btnCrear" runat="server" CssClass="btn btn-success btn-hover-move px-4" Text="Crear Nuevo Cliente" OnClick="btnCrear_Click" />

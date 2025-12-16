@@ -37,7 +37,7 @@
     <!-- Titulo principal -->
     <div class="text-center mb-4">
         <h2 class="fw-bold">Mensajería RapidiTico 🇨🇷</h2>
-        <h4 class="text-secondary">Registro de Entregas</h4>
+        <h4 class="text-secondary">🏍 Registro de Entregas</h4>
     </div>
     <div class="card card-custom">
         <h5 class="section-title">Datos de la Entrega</h5>

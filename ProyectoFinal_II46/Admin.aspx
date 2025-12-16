@@ -70,6 +70,7 @@
     .btn-clientes { background: #4a90e2; }
     .btn-entregas { background: #28a745; }
     .btn-paquetes { background: #f39c12; }
+    .btn-historial {background: #b200ff;}
     .btn-repartidores { background: #e74c3c; }
 
 </style>
@@ -84,6 +85,7 @@
         <a href="FormCliente.aspx" class="admin-button btn-clientes"> Gestión de Clientes</a>
         <a href="FormEntrega.aspx" class="admin-button btn-entregas"> Gestión de Entregas</a>
         <a href="FormPaquete.aspx" class="admin-button btn-paquetes"> Gestión de Paquetes</a>
+        <a href="MisEntregas.aspx" class="admin-button btn-historial"> Historial de Entregas</a>
         <a href="FormRepartidor.aspx" class="admin-button btn-repartidores">Gestión de Repartidores</a>
     </div>
 </div>

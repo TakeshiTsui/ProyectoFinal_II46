@@ -1,14 +1,14 @@
 ﻿Imports ProyectoFinal_II46.Utils.SwalUtils
-Public Class FormPaquete
+Public Class FormPaquete2
     Inherits System.Web.UI.Page
     Public paquete As New Paquete()
     Protected dbHelper As New BdPaquete()
     Protected bdcliente As New BdCliente()
 
-
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
             cargarCliente()
+            ddlCliente.Visible = False
             txtIdClientes.Visible = False
             txtNombrePaquete.Visible = False
             txtDescripcion.Visible = False
@@ -23,12 +23,10 @@ Public Class FormPaquete
             btnBorrar.Visible = False
             btnCancelar.Visible = False
             CType(GvPaquete.Columns(0), CommandField).ShowSelectButton = False
-            CType(GvPaquete.Columns(1), CommandField).ShowEditButton = False
             CType(GvPaquete.Columns(11), CommandField).ShowDeleteButton = False
             GvPaquete.DataBind()
         End If
     End Sub
-
     Public Sub cargarCliente()
         ddlCliente.DataSource = bdcliente.listarClientes()
         ddlCliente.DataTextField = "NombreCompleto"
@@ -37,8 +35,8 @@ Public Class FormPaquete
         ddlEstado.Items.Insert(0, New ListItem("--Seleccione un estado--", ""))
         ddlCliente.DataBind()
     End Sub
-
     Protected Sub btnCrear_Click(sender As Object, e As EventArgs)
+        ddlCliente.Visible = True
         txtIdClientes.Visible = True
         txtNombrePaquete.Visible = True
         txtDescripcion.Visible = True
@@ -53,9 +51,42 @@ Public Class FormPaquete
         btnBorrar.Visible = True
         btnCancelar.Visible = True
         CType(GvPaquete.Columns(0), CommandField).ShowSelectButton = True
-        CType(GvPaquete.Columns(1), CommandField).ShowEditButton = True
         CType(GvPaquete.Columns(11), CommandField).ShowDeleteButton = True
         GvPaquete.DataBind()
+    End Sub
+
+    Protected Sub btnGuardar_Click(sender As Object, e As EventArgs)
+        Try
+            If txtNombrePaquete.Text = "" Or txtDescripcion.Text = "" Or txtPrecio.Text = "" Or txtPeso.Text = "" Or txtFechaEnvio.Text = "" Or ddlEstado.SelectedValue = "" Or txtDestino.Text = "" Then
+                ShowErrorMessage(Me, "Error", "❌ Por favor, complete todos los campos antes de guardar.")
+                Return
+            End If
+            paquete.Nombrepaquete = txtNombrePaquete.Text
+            paquete.IdCliente = Convert.ToInt32(txtIdClientes.Text)
+            paquete.Descripcion = txtDescripcion.Text
+            paquete.Precio = Convert.ToDecimal(txtPrecio.Text)
+            paquete.Peso = Convert.ToDecimal(txtPeso.Text)
+            paquete.FechaEnvio = Convert.ToDateTime(txtFechaEnvio.Text)
+            paquete.Estado = ddlEstado.Text
+            paquete.Destino = txtDestino.Text
+            If dbHelper.create(paquete) = True Then
+                ShowSuccessMessage(Me, "Guardado", "✅ Paquete guardado correctamente.")
+                txtIdClientes.Text = ""
+                txtNombrePaquete.Text = ""
+                txtDescripcion.Text = ""
+                txtPrecio.Text = ""
+                txtPeso.Text = ""
+                txtFechaEnvio.Text = ""
+                ddlEstado.Text = ""
+                txtDestino.Text = ""
+            Else
+                ShowErrorMessage(Me, "Error", "❌ Error al guardar el paquete.")
+            End If
+
+            GvPaquete.DataBind()
+        Catch ex As Exception
+            ShowErrorMessage(Me, "Error", "❌ Error al guardar el paquete: " & ex.Message)
+        End Try
     End Sub
 
     Protected Sub btnActualizar_Click(sender As Object, e As EventArgs)
@@ -93,7 +124,7 @@ Public Class FormPaquete
     Protected Sub btnBorrar_Click(sender As Object, e As EventArgs)
         btnGuardar.Visible = True
         limpiarFormulario()
-        Editando.Value = ""
+        Editando.Value = " "
     End Sub
 
     Protected Sub btnCancelar_Click(sender As Object, e As EventArgs)
@@ -110,10 +141,10 @@ Public Class FormPaquete
         btnBorrar.Visible = False
         btnCancelar.Visible = False
         CType(GvPaquete.Columns(0), CommandField).ShowSelectButton = False
-        CType(GvPaquete.Columns(1), CommandField).ShowEditButton = False
         CType(GvPaquete.Columns(11), CommandField).ShowDeleteButton = False 'ajusta el índice según tu GridView
         GvPaquete.DataBind()
     End Sub
+
     Protected Sub GvPaquete_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
         Try
             Dim id As Integer = Convert.ToInt32(GvPaquete.DataKeys(e.RowIndex).Value)
@@ -131,39 +162,12 @@ Public Class FormPaquete
         GvPaquete.DataBind()
     End Sub
 
-    Protected Sub GvPaquete_RowUpdating(sender As Object, e As GridViewUpdateEventArgs)
-        Try
-            If txtNombrePaquete.Text = "" Or txtDescripcion.Text = "" Or txtPrecio.Text = "" Or txtPeso.Text = "" Or txtFechaEnvio.Text = "" Or ddlEstado.SelectedValue = "" Or txtDestino.Text = "" Then
-                ShowErrorMessage(Me, "Error", "❌ Por favor, complete todos los campos antes de actualizar.")
-                Return
-            End If
-            Dim id As Integer = Convert.ToInt32(GvPaquete.DataKeys(e.RowIndex).Value)
-            Dim paquete As New Paquete With {
-                .IdPaquete = id,
-                .IdCliente = Convert.ToInt32(e.NewValues("IdCliente")),
-                .Nombrepaquete = e.NewValues("NombrePaquete").ToString(),
-                .Descripcion = e.NewValues("Descripcion").ToString(),
-                .Precio = e.NewValues("Precio").ToString,
-                .Peso = e.NewValues("Peso").ToString,
-                .FechaEnvio = e.NewValues("FechaEnvio").ToString,
-                .Estado = e.NewValues("Estado").ToString(),
-                .Destino = e.NewValues("Destino").ToString()
-            }
-            dbHelper.update(paquete)
-            GvPaquete.EditIndex = -1
-            GvPaquete.DataBind()
-            ShowSuccessMessage(Me, "Actualizado", "✅ Datos del paquete actualizado correctamente.")
-        Catch ex As Exception
-            ShowErrorMessage(Me, "Error", "❌ Error al actualizar el paquete: " & ex.Message)
-        End Try
-    End Sub
-
     Protected Sub GvPaquete_SelectedIndexChanged(sender As Object, e As EventArgs)
         Try
             btnGuardar.Enabled = False
             Dim row As GridViewRow = GvPaquete.SelectedRow
             Dim id As Integer = Convert.ToInt32(GvPaquete.DataKeys(row.RowIndex).Value)
-            txtIdClientes.Text = row.Cells(3).Text
+            txtIdClientes.Text = row.Cells(2).Text
             txtNombrePaquete.Text = row.Cells(4).Text
             txtDescripcion.Text = row.Cells(5).Text
             txtPrecio.Text = row.Cells(6).Text
@@ -174,40 +178,6 @@ Public Class FormPaquete
             Editando.Value = id.ToString()
         Catch ex As Exception
             ShowErrorMessage(Me, "Error", "Error al seleccionar el paquete: " & ex.Message)
-        End Try
-    End Sub
-
-    Protected Sub btnGuardar_Click(sender As Object, e As EventArgs)
-        Try
-            If txtNombrePaquete.Text = "" Or txtDescripcion.Text = "" Or txtPrecio.Text = "" Or txtPeso.Text = "" Or txtFechaEnvio.Text = "" Or ddlEstado.SelectedValue = "" Or txtDestino.Text = "" Then
-                ShowErrorMessage(Me, "Error", "❌ Por favor, complete todos los campos antes de guardar.")
-                Return
-            End If
-            paquete.Nombrepaquete = txtNombrePaquete.Text
-            paquete.IdCliente = Convert.ToInt32(txtIdClientes.Text)
-            paquete.Descripcion = txtDescripcion.Text
-            paquete.Precio = Convert.ToDecimal(txtPrecio.Text)
-            paquete.Peso = Convert.ToDecimal(txtPeso.Text)
-            paquete.FechaEnvio = Convert.ToDateTime(txtFechaEnvio.Text)
-            paquete.Estado = ddlEstado.Text
-            paquete.Destino = txtDestino.Text
-            If dbHelper.create(paquete) = True Then
-                ShowSuccessMessage(Me, "Guardado", "✅ Paquete guardado correctamente.")
-                txtIdClientes.Text = ""
-                txtNombrePaquete.Text = ""
-                txtDescripcion.Text = ""
-                txtPrecio.Text = ""
-                txtPeso.Text = ""
-                txtFechaEnvio.Text = ""
-                ddlEstado.Text = ""
-                txtDestino.Text = ""
-            Else
-                ShowErrorMessage(Me, "Error", "❌ Error al guardar el paquete.")
-            End If
-
-            GvPaquete.DataBind()
-        Catch ex As Exception
-            ShowErrorMessage(Me, "Error", "❌ Error al guardar el paquete: " & ex.Message)
         End Try
     End Sub
     Protected Sub limpiarFormulario()
@@ -222,5 +192,9 @@ Public Class FormPaquete
         txtFechaEnvio.Text = ""
         ddlEstado.Text = ""
         txtDestino.Text = ""
+    End Sub
+
+    Protected Sub btnEntrega_Click(sender As Object, e As EventArgs)
+        Response.Redirect("FormEntregas2.aspx")
     End Sub
 End Class

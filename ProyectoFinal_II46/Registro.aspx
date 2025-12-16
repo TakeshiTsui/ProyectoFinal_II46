@@ -40,7 +40,7 @@
 
     <div class="registro-container">
 
-        <h2>Registro de Usuario</h2>
+        <h2>👤 Registro de Usuario</h2>
 
         <asp:Label ID="lblMensaje" runat="server" ForeColor="Red"></asp:Label>
 

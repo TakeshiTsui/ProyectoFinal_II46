@@ -20,7 +20,7 @@
         }
     </style>
     <div class="tracking-container">
-        <h3 class="fw-bold text-center"> Rastrear Paquete</h3>
+        <h3 class="fw-bold text-center"> 🗺 Rastrear Paquete</h3>
         <p class="text-muted text-center">Ingresa el número de tu paquete para ver su estado</p>
         <asp:TextBox ID="txtNumeroPaquete" runat="server" CssClass="form-control mb-3" placeholder="N° de Paquete" />
         <asp:Button ID="btnRastrear" Text="Rastrear" CssClass="btn btn-primary w-100" runat="server" onclick="btnRastrear_Click" />

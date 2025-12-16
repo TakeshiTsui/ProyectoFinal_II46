@@ -147,6 +147,7 @@
     <Content Include="FormEntrega.aspx" />
     <Content Include="FormEntregas2.aspx" />
     <Content Include="FormPaquete.aspx" />
+    <Content Include="FormPaquete2.aspx" />
     <Content Include="FormRepartidor.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
@@ -255,6 +256,13 @@
     </Compile>
     <Compile Include="FormPaquete.aspx.vb">
       <DependentUpon>FormPaquete.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="FormPaquete2.aspx.designer.vb">
+      <DependentUpon>FormPaquete2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormPaquete2.aspx.vb">
+      <DependentUpon>FormPaquete2.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="FormRepartidor.aspx.designer.vb">

@@ -19,7 +19,7 @@
     </style>
 
     <div class="support-box">
-        <h3 class="fw-bold text-center"> Soporte Rapiditico</h3>
+        <h3 class="fw-bold text-center"> ☎ Soporte Rapiditico</h3>
         <p class="text-muted text-center">¿Tienes algún problema con tu envío? Escríbenos</p>
     </div>
     <asp:TextBox id="txtAsunto" runat="server" cssclass="form-control mb-3" placeholder="Asunto" />
