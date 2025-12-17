@@ -33,7 +33,6 @@
         max-width: 1500px;
         margin: 60px auto;
         padding: 35px;
-        border-radius: 20px;
         background: #ffffff;
         box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }

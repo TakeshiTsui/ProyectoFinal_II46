@@ -8,7 +8,7 @@
             padding: 0;
         }
         .entregas-container {
-            max-width: 900px;
+            max-width: 1140px;
             margin: 60px auto;
             padding: 35px;
             border-radius: 20px;
